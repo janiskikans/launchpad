@@ -1,29 +1,5 @@
-# Launchpad
+# :rocket: Launchpad
 
-## Project setup
+## :hammer: Built with
 
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-
-```
-yarn build
-```
-
-### Lints and fixes files
-
-```
-yarn lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [Launch Library v2.0.0](https://thespacedevs.com/llapi) by [The Space Devs](https://thespacedevs.com/)
