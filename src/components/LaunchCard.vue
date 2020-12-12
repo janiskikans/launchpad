@@ -5,21 +5,29 @@
     <div class="md:max-w-1/4 launch-card__image-wrapper">
       <img :src="launch.image" class="launch-card__image" />
     </div>
-    <div class="p-4">
+    <div class="p-4 w-full">
       <div class="text-2xl text-gray-50">{{ launch.name }}</div>
       <div class="text-lg text-gray-300">
         {{ startDate }}
       </div>
+    </div>
+    <div class="mx-auto flex flex-wrap content-center">
+      <countdown-timer :end-time="launch.windowStart.getTime()" class="p-8" />
     </div>
   </div>
 </template>
 
 <script>
 import Launch from '@structures/launch/launch';
+import CountdownTimer from '@components/CountdownTimer';
 import { format } from 'date-fns';
 
 export default {
   name: 'LaunchCard',
+
+  components: {
+    CountdownTimer,
+  },
 
   props: {
     launch: {
