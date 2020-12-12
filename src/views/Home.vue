@@ -30,9 +30,7 @@ export default {
 
   methods: {
     loadUpcomingLaunches() {
-      getUpcomingLaunches().then(
-        launches => (this.upcomingLaunches = launches),
-      );
+      getUpcomingLaunches().then(launches => (this.upcomingLaunches = launches));
     },
   },
 };

@@ -1,5 +1,5 @@
 <template>
   <div>
-    About
+    Made by Janis Kikans
   </div>
 </template>

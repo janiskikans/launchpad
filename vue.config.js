@@ -16,6 +16,7 @@ module.exports = {
         '@views': path.resolve(__dirname, 'src/views'),
         '@structures': path.resolve(__dirname, 'src/structures'),
         '@services': path.resolve(__dirname, 'src/services'),
+        '@helpers': path.resolve(__dirname, 'src/helpers'),
       },
     },
   },

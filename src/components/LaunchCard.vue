@@ -1,15 +1,11 @@
 <template>
-  <div
-    class="launch-card bg-gray-800 shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden"
-  >
+  <div class="launch-card bg-gray-800 shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden">
     <div class="md:max-w-1/4 launch-card__image-wrapper">
       <img :src="launch.image" class="launch-card__image" />
     </div>
     <div class="p-4 w-full">
       <div class="text-2xl text-gray-50">{{ launch.name }}</div>
-      <div class="text-lg text-gray-300">
-        {{ startDate }}
-      </div>
+      <div class="text-lg text-gray-300">{{ timeWindow }}</div>
     </div>
     <div class="mx-auto flex flex-wrap content-center">
       <countdown-timer :end-time="launch.windowStart.getTime()" class="p-8" />
@@ -20,7 +16,8 @@
 <script>
 import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
-import { format } from 'date-fns';
+import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
+import { format, isEqual } from 'date-fns';
 
 export default {
   name: 'LaunchCard',
@@ -37,8 +34,18 @@ export default {
   },
 
   computed: {
-    startDate() {
-      return format(this.launch.windowStart, 'dd/MM/yyyy, h:mm:ss a');
+    /**
+     * @return {string}
+     */
+    timeWindow() {
+      if (isEqual(this.launch.windowStart, this.launch.windowEnd)) {
+        return format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT);
+      }
+
+      return `${format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT)} - ${format(
+        this.launch.windowEnd,
+        LAUNCH_COUNTDOWN_FORMAT,
+      )}`;
     },
   },
 };
