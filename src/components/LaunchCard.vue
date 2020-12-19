@@ -3,12 +3,19 @@
     <div class="md:max-w-1/4 launch-card__image-wrapper">
       <img :src="launch.image" class="launch-card__image" />
     </div>
+
     <div class="p-4 w-full">
       <div class="text-2xl text-gray-50">{{ launch.name }}</div>
-      <div class="text-lg text-gray-300">{{ timeWindow }}</div>
+      <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-300 w-max">{{ launchTime }}</div>
     </div>
-    <div class="mx-auto flex flex-wrap content-center">
-      <countdown-timer :end-time="launch.windowStart.getTime()" class="p-8" />
+
+    <div class="mx-auto flex flex-col content-center p-8 my-auto">
+      <countdown-timer :end-time="launch.net.getTime()" class="mb-4" />
+      <div class="text-white uppercase text-center text-2xl">
+        <span class="rounded-lg px-1.5 py-1" :class="statusClass">
+          {{ launch.status.name }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -18,6 +25,7 @@ import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format, isEqual } from 'date-fns';
+import { STATUS_TBD, STATUS_GO, STATUS_SUCCESS } from '@structures/launch/launchStatus';
 
 export default {
   name: 'LaunchCard',
@@ -37,15 +45,44 @@ export default {
     /**
      * @return {string}
      */
-    timeWindow() {
-      if (isEqual(this.launch.windowStart, this.launch.windowEnd)) {
-        return format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT);
+    launchTime() {
+      return format(this.launch.net, LAUNCH_COUNTDOWN_FORMAT);
+    },
+
+    /**
+     * @return {{}}
+     */
+    launchTimeTooltip() {
+      let content = '';
+
+      if (!isEqual(this.launch.windowStart, this.launch.windowEnd)) {
+        content = `Window: ${format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT)} - ${format(
+          this.launch.windowEnd,
+          LAUNCH_COUNTDOWN_FORMAT,
+        )}`;
       }
 
-      return `${format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT)} - ${format(
-        this.launch.windowEnd,
-        LAUNCH_COUNTDOWN_FORMAT,
-      )}`;
+      return {
+        content,
+        classes: 'font-medium',
+      };
+    },
+
+    /**
+     * @return {string}
+     */
+    statusClass() {
+      const status = this.launch.status.id;
+
+      if (status === STATUS_GO || status === STATUS_SUCCESS) {
+        return 'bg-green-500';
+      }
+
+      if (status === STATUS_TBD) {
+        return 'bg-gray-600';
+      }
+
+      return '';
     },
   },
 };
