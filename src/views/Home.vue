@@ -4,7 +4,7 @@
       v-for="(launch, index) in upcomingLaunches"
       :key="index"
       :launch="launch"
-      class="m-4 mb-12 md:max-h-96 md:max-w-3/4 md:mx-auto"
+      class="m-4 mb-12 lg:max-h-96 lg:max-w-3/4 lg:mx-auto"
     />
   </div>
 </template>
