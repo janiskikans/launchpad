@@ -5,6 +5,7 @@ import VTooltip from 'v-tooltip';
 import router from './router';
 
 import '@assets/scss/main.scss';
+import '@fortawesome/fontawesome-free/js/all';
 
 Vue.use(VTooltip);
 

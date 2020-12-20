@@ -7,12 +7,13 @@
     <div class="flex flex-col xl:flex-row w-full">
       <div class="p-4 h-full xl:w-full">
         <div class="text-2xl text-gray-50">{{ launch.name }}</div>
-        <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-300 w-max">{{ launchTime }}</div>
+        <div class="text-gray-300">{{ launch.launchServiceProvider.name }}</div>
       </div>
 
       <div class="flex flex-col content-center p-8">
         <div class="m-auto">
-          <countdown-timer :end-time="launch.net.getTime()" class="mb-4" />
+          <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-300 text-center mb-2">{{ launchTime }}</div>
+          <countdown-timer :end-time="launch.net.getTime()" class="mb-6" />
           <div class="text-white uppercase text-center text-2xl">
             <span class="rounded-lg px-1.5 py-1 opacity-90" :class="statusClass">
               {{ launch.status.name }}

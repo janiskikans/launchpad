@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ['./src/*.vue', './src/views/*.vue', './src/components/**/*.vue'],
   theme: {
     maxWidth: {
       '1/4': '25%',

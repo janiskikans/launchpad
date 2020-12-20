@@ -19,12 +19,20 @@
     </header>
 
     <router-view />
+
+    <main-footer />
   </div>
 </template>
 
 <script>
+import MainFooter from '@components/layout/MainFooter';
+
 export default {
   name: 'App',
+
+  components: {
+    MainFooter,
+  },
 };
 </script>
 

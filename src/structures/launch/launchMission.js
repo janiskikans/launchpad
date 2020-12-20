@@ -25,6 +25,6 @@ export default class LaunchMission {
     this.description = params.description ?? '';
     this.launchDesignator = params.launch_designator ?? '';
     this.type = params.type ?? '';
-    this.orbit = new Orbit(params.orbit);
+    this.orbit = params.orbit ? new Orbit(params.orbit) : null;
   }
 }
