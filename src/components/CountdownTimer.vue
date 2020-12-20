@@ -1,6 +1,6 @@
 <template>
   <div class="text-white flex flex-row">
-    <div v-if="showTMinus" class="text-3xl mr-2">T-</div>
+    <div v-if="showTMinus" class="text-3xl mr-2">T{{ signAfterT }}</div>
     <div class="text-center">
       <div class="text-3xl">{{ days | atLeastTwoDigits }}</div>
       <div class="text-sm text-gray-200">DAYS</div>
@@ -36,6 +36,7 @@ export default {
       return value.toLocaleString('en-US', {
         minimumIntegerDigits: 2,
         useGrouping: false,
+        signDisplay: 'never',
       });
     },
   },
@@ -87,12 +88,18 @@ export default {
     seconds() {
       return Math.floor(this.remainingTime) % 60;
     },
+
+    /**
+     * @return {string}
+     */
+    signAfterT() {
+      return this.remainingTime >= 0 ? '-' : '+';
+    },
   },
 
   watch: {
     currentTime() {
       this.setRemainingTime();
-      this.clearTimerIfIsPast();
     },
   },
 
@@ -118,15 +125,6 @@ export default {
 
     setRemainingTime() {
       this.remainingTime = Math.floor((this.endTime - this.currentTime) / 1000);
-    },
-
-    clearTimerIfIsPast() {
-      if (this.remainingTime > 0) {
-        return;
-      }
-
-      this.remainingTime = 0;
-      this.clearIntervalTimer();
     },
 
     clearIntervalTimer() {

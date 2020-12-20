@@ -1,7 +1,7 @@
 <template>
-  <div class="launch-card bg-gray-800 shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden">
-    <div class="md:max-w-1/4 launch-card__image-wrapper">
-      <img :src="launch.image" class="launch-card__image" />
+  <div class="launch-card bg-gray-700 shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden">
+    <div class="launch-card__image-wrapper">
+      <img :src="launch.image" class="launch-card__image w-full md:w-80 md:max-h-auto" />
     </div>
 
     <div class="p-4 w-full">
@@ -9,12 +9,14 @@
       <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-300 w-max">{{ launchTime }}</div>
     </div>
 
-    <div class="mx-auto flex flex-col content-center p-8 my-auto">
-      <countdown-timer :end-time="launch.net.getTime()" class="mb-4" />
-      <div class="text-white uppercase text-center text-2xl">
-        <span class="rounded-lg px-1.5 py-1" :class="statusClass">
-          {{ launch.status.name }}
-        </span>
+    <div class="flex flex-col content-center p-8">
+      <div class="m-auto">
+        <countdown-timer :end-time="launch.net.getTime()" class="mb-4" />
+        <div class="text-white uppercase text-center text-2xl">
+          <span class="rounded-lg px-1.5 py-1 opacity-90" :class="statusClass">
+            {{ launch.status.name }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -55,7 +57,8 @@ export default {
     launchTimeTooltip() {
       let content = '';
 
-      if (!isEqual(this.launch.windowStart, this.launch.windowEnd)) {
+      const isMatchingWindowStartAndEnd = isEqual(this.launch.windowStart, this.launch.windowEnd);
+      if (!isMatchingWindowStartAndEnd) {
         content = `Window: ${format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT)} - ${format(
           this.launch.windowEnd,
           LAUNCH_COUNTDOWN_FORMAT,
@@ -93,7 +96,11 @@ export default {
 
 .launch-card {
   &__image {
+    max-height: 450px;
+
     @media (min-width: $media-breakpoint-md) {
+      max-width: 250px;
+      height: 300px;
       clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
     }
   }
