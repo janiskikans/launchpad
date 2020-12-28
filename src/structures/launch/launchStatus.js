@@ -7,4 +7,18 @@ export default class LaunchStatus {
     this.id = params.id ?? null;
     this.name = params.name ?? '';
   }
+
+  /**
+   * @return {boolean}
+   */
+  isGood() {
+    return this.id === STATUS_GO || this.id === STATUS_SUCCESS;
+  }
+
+  /**
+   * @return {boolean}
+   */
+  isNeutral() {
+    return !this.isGood();
+  }
 }

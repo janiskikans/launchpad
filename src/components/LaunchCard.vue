@@ -1,5 +1,8 @@
 <template>
-  <div class="launch-card bg-gray-700 shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden">
+  <div
+    class="launch-card bg-gray-700 shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden"
+    :class="bodyClass"
+  >
     <div class="launch-card__image-wrapper">
       <img :src="launch.image" class="launch-card__image w-full lg:w-80 lg:max-h-auto" />
     </div>
@@ -29,8 +32,7 @@
 import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
-import { format, isEqual } from 'date-fns';
-import { STATUS_TBD, STATUS_GO, STATUS_SUCCESS } from '@structures/launch/launchStatus';
+import { format } from 'date-fns';
 
 export default {
   name: 'LaunchCard',
@@ -60,8 +62,7 @@ export default {
     launchTimeTooltip() {
       let content = '';
 
-      const isMatchingWindowStartAndEnd = isEqual(this.launch.windowStart, this.launch.windowEnd);
-      if (!isMatchingWindowStartAndEnd) {
+      if (!this.launch.hasMatchingLaunchWindowTimes()) {
         content = `Window: ${format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT)} - ${format(
           this.launch.windowEnd,
           LAUNCH_COUNTDOWN_FORMAT,
@@ -78,17 +79,28 @@ export default {
      * @return {string}
      */
     statusClass() {
-      const status = this.launch.status.id;
-
-      if (status === STATUS_GO || status === STATUS_SUCCESS) {
+      if (this.launch.status.isGood()) {
         return 'bg-green-500';
       }
 
-      if (status === STATUS_TBD) {
+      if (this.launch.status.isNeutral()) {
         return 'bg-gray-600';
       }
 
       return '';
+    },
+
+    /**
+     * @return {string}
+     */
+    bodyClass() {
+      let classList = 'launch-card__body';
+
+      if (this.launch.getDistanceFromNowInHours() < 24 && this.launch.status.isGood()) {
+        classList += ' border-b-4 lg:border-r-4 lg:border-b-0 border-green-500';
+      }
+
+      return classList;
     },
   },
 };
