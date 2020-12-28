@@ -35,3 +35,16 @@ yarn lint
 ### Tailwind CSS style purging
 
 When bulding for production unused CSS is removed via purging. Purge options can be found in _tailwind.config.js_ file under **purge** property. It might need to be adjusted accordingly when changing view file structure.
+
+### Directory alias
+
+As we're using Webpack there's an option to use alias for easier file referencing. Aliases are defined in _vue.config.js_ under **configureWebpack -> resolve -> alias**. Currently the following aliases are available:
+| Alias | Directory |
+|-------|-----------|
+| **@api** | `./src/api` |
+| **@assets** | `./src/assets` |
+| **@components** | `./src/components` |
+| **@views** | `./src/views` |
+| **@structures** | `./src/structures` |
+| **@services** | `./src/services` |
+| **@helpers** | `./src/helpers` |
