@@ -14,7 +14,7 @@ import LaunchCard from '@components/LaunchCard';
 import { getUpcomingLaunches } from '@services/launchService';
 
 export default {
-  name: 'Home',
+  name: 'UpcomingLaunches',
 
   components: { LaunchCard },
 
