@@ -15,6 +15,9 @@ export default class LaunchStatus {
     return this.id === STATUS_GO || this.id === STATUS_SUCCESS;
   }
 
+  /**
+   * @return {boolean}
+   */
   isNeutral() {
     return !this.isGood();
   }
