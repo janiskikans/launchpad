@@ -1,5 +1,5 @@
 <template>
-  <div class="launch-card bg-gray-700 shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden">
+  <div class="launch-card shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden" :class="bodyClass">
     <div class="launch-card__image-wrapper">
       <img :src="launch.image" class="launch-card__image w-full lg:w-80 lg:max-h-auto" />
     </div>
@@ -29,7 +29,7 @@
 import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
-import { format, isEqual } from 'date-fns';
+import { format, isEqual, differenceInHours } from 'date-fns';
 import { STATUS_TBD, STATUS_GO, STATUS_SUCCESS } from '@structures/launch/launchStatus';
 
 export default {
@@ -90,6 +90,26 @@ export default {
 
       return '';
     },
+
+    /**
+     * @return {number}
+     */
+    hoursTillLaunch() {
+      return differenceInHours(this.launch.net, Date.now());
+    },
+
+    /**
+     * @return {string}
+     */
+    bodyClass() {
+      let classList = 'launch-card__body';
+
+      if (this.hoursTillLaunch < 24 && this.launch.status.id === STATUS_GO) {
+        classList += ' border-b-4 lg:border-r-4 lg:border-b-0 border-green-500';
+      }
+
+      return classList;
+    },
   },
 };
 </script>
@@ -98,6 +118,17 @@ export default {
 @import '@assets/scss/_variables.scss';
 
 .launch-card {
+  &__body {
+    @apply bg-gray-700;
+
+    &--immediate {
+      // background-color: #514137;
+      // background-color: #375147;
+      // background-color: #513b37;
+      // background-color: #51373c;
+    }
+  }
+
   &__image {
     max-height: 450px;
 
