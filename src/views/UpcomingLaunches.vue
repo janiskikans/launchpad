@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import LaunchCard from '@components/LaunchCard';
+import LaunchCard from '@components/upcomingLaunches/LaunchCard';
 import { getUpcomingLaunches } from '@services/launchService';
 
 export default {

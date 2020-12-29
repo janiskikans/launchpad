@@ -11,6 +11,13 @@
       <div class="p-4 h-full xl:w-full">
         <div class="text-2xl text-gray-50">{{ launch.name }}</div>
         <div class="text-gray-300">{{ launch.launchServiceProvider.name }}</div>
+        <button
+          type="button"
+          class="border border-gray-500 text-white rounded-md px-4 py-2 my-2 transition duration-500 ease select-none hover:bg-gray-600 focus:outline-none focus:shadow-outline"
+          @click="showLaunchModal = true"
+        >
+          Launch Details
+        </button>
       </div>
 
       <div class="flex flex-col content-center p-8">
@@ -25,6 +32,15 @@
         </div>
       </div>
     </div>
+
+    <modal v-show="showLaunchModal" :has-footer="false" @close-modal="showLaunchModal = false">
+      <template v-slot:header>
+        <span class="sm:mr-24 font-bold text-gray-700 text-lg">{{ launch.name }}</span>
+      </template>
+      <template v-slot:body>
+        <detailed-launch-modal :launch="launch" />
+      </template>
+    </modal>
   </div>
 </template>
 
@@ -33,12 +49,16 @@ import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
+import Modal from '@components/ui/Modal';
+import DetailedLaunchModal from '@components/upcomingLaunches/DetailedLaunchModal';
 
 export default {
   name: 'LaunchCard',
 
   components: {
     CountdownTimer,
+    Modal,
+    DetailedLaunchModal,
   },
 
   props: {
@@ -46,6 +66,12 @@ export default {
       type: Launch,
       required: true,
     },
+  },
+
+  data() {
+    return {
+      showLaunchModal: false,
+    };
   },
 
   computed: {
