@@ -18,7 +18,9 @@
       </div>
     </header>
 
-    <router-view />
+    <keep-alive include="UpcomingLaunches">
+      <router-view />
+    </keep-alive>
 
     <main-footer />
   </div>
