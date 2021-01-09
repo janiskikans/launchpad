@@ -20,13 +20,13 @@
         </button>
       </div>
 
-      <div class="flex my-auto">
+      <div class="flex my-auto mr-12">
         <div class="m-auto flex flex-col lg:flex-row xl:flex-col mb-4 lg:mb-8 xl:my-auto">
-          <div class="lg:mr-12">
+          <div>
             <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-300 text-center mb-2">{{ launchTime }}</div>
             <countdown-timer :end-time="launch.net.getTime()" />
           </div>
-          <div class="text-white uppercase text-center text-2xl mt-4 mb-2 lg:my-auto xl:mt-4 xl:mb-0">
+          <div class="text-white uppercase text-center text-2xl lg:ml-12 xl:ml-0 mt-4 mb-2 lg:my-auto xl:mt-4 xl:mb-0">
             <span class="rounded-lg px-1.5 py-1 opacity-90" :class="statusClass">
               {{ launch.status.name }}
             </span>
