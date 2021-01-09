@@ -21,7 +21,7 @@
       </div>
 
       <div class="flex my-auto">
-        <div class="flex flex-col lg:flex-row xl:flex-col mx-auto mb-4 lg:mb-8 xl:my-auto">
+        <div class="m-auto flex flex-col lg:flex-row xl:flex-col mb-4 lg:mb-8 xl:my-auto">
           <div class="lg:mr-12">
             <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-300 text-center mb-2">{{ launchTime }}</div>
             <countdown-timer :end-time="launch.net.getTime()" />
