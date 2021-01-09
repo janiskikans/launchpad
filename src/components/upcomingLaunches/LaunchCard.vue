@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="launch-card bg-gray-700 shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden"
-    :class="bodyClass"
-  >
+  <div class="launch-card bg-gray-700 shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden"
+       :class="bodyClass">
     <div class="launch-card__image-wrapper">
       <img :src="launch.image" :alt="launch.name" class="launch-card__image w-full lg:w-80 lg:max-h-auto" />
     </div>
@@ -17,8 +15,7 @@
           <button
             type="button"
             class="border border-gray-500 text-white rounded-md px-4 py-2 mt-4 w-full sm:w-auto lg:w-full xl:w-auto transition duration-500 ease select-none hover:bg-gray-600 focus:outline-none focus:shadow-outline"
-            @click="showLaunchModal = true"
-          >
+            @click="showLaunchModal = true">
             Launch Details
           </button>
         </div>

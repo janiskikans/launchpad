@@ -2,6 +2,7 @@
 node_modules
 /dist
 /testData
+.yarn-error.log
 
 
 # local env files
