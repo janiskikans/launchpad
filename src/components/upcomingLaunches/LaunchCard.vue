@@ -55,16 +55,14 @@ import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
-import Modal from '@components/ui/Modal';
-import DetailedLaunchModal from '@components/upcomingLaunches/DetailedLaunchModal';
 
 export default {
   name: 'LaunchCard',
 
   components: {
     CountdownTimer,
-    Modal,
-    DetailedLaunchModal,
+    Modal: () => import('@components/ui/Modal'),
+    DetailedLaunchModal: () => import('@components/upcomingLaunches/DetailedLaunchModal'),
   },
 
   props: {
