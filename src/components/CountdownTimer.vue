@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white flex flex-row">
+  <div class="text-white flex flex-row w-auto lg:w-64">
     <div v-if="showTMinus" class="text-3xl mr-2">T{{ signAfterT }}</div>
     <div class="text-center">
       <div class="text-3xl">{{ days | atLeastTwoDigits }}</div>
