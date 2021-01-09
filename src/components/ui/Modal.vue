@@ -2,7 +2,7 @@
   <transition name="modal-fade">
     <div class="modal-background fixed flex justify-center items-center inset-0 z-10" @click.self="closeModal">
       <div
-        class="bg-white shadow-xl overflow-x-auto flex flex-col px-4 pt-5 pb-4 sm:p-6 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 xl:mx-0 w-full sm:w-auto"
+        class="bg-white shadow-xl overflow-x-auto flex flex-col px-4 pt-5 pb-4 sm:p-6 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/5"
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription"
       >
