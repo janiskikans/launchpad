@@ -1,8 +1,18 @@
 <template>
   <transition name="modal-fade">
-    <div class="modal-background fixed flex justify-center items-center inset-0 z-10" @click.self="closeModal">
-      <div class="modal" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-        <div id="modalTitle" class="px-6 py-4 flex justify-between border-b border-gray-200">
+    <div
+      class="modal-background fixed flex justify-center items-center inset-0 z-10"
+      @click.self="closeModal"
+    >
+      <div
+        class="modal"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDescription"
+      >
+        <div
+          id="modalTitle"
+          class="px-6 py-4 flex justify-between border-b border-gray-200"
+        >
           <slot v-if="hasHeader" name="header">
             Modal header
           </slot>
@@ -11,7 +21,8 @@
             type="button"
             class="modal__close-button"
             aria-label="Close modal"
-            @click="closeModal">
+            @click="closeModal"
+          >
             <i class="fas fa-times-circle"></i>
           </button>
         </div>
@@ -82,7 +93,7 @@ export default {
 
 <style lang="scss" scoped>
 .modal {
-  @apply bg-white shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/5;
+  @apply bg-gray-100 shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/5;
 
   &__close-button {
     @apply text-lg px-2 cursor-pointer transition duration-300 ease-in-out text-gray-700 hover:text-gray-600 focus:outline-none;

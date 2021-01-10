@@ -2,5 +2,6 @@ module.exports = {
   trailingComma: "all",
   semi: true,
   singleQuote: true,
-  htmlWhitespaceSensitivity: "ignore"
+  htmlWhitespaceSensitivity: "ignore",
+  printWidth: 120,
 };
