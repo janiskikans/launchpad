@@ -60,6 +60,22 @@
           No mission information provided
         </div>
       </card>
+
+      <card title="Launch Location">
+        <div v-if="launch.pad" class="space-y-2">
+          <article>
+            <h3 class="font-bold">Location</h3>
+            <p>{{ launch.pad.location.name }}</p>
+          </article>
+          <article>
+            <h3 class="font-bold">Pad</h3>
+            <p>{{ launch.pad.name }}</p>
+          </article>
+        </div>
+        <div v-else>
+          No launch pad information provided
+        </div>
+      </card>
     </div>
   </div>
 </template>
