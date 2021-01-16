@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-2">
       <img :src="launch.image" :alt="launch.name" class="rounded-lg" />
 
-      <card title="General info">
+      <card title="General">
         <div class="space-y-2 mt-0">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -17,10 +17,18 @@
               {{ launch.inHold ? 'Yes' : 'No' }}
             </p>
           </article>
+          <article>
+            <h3 class="font-bold">Launch Window Start</h3>
+            <p>{{ launchWindowStart }}</p>
+          </article>
+          <article>
+            <h3 class="font-bold">Launch Window End</h3>
+            <p>{{ launchWindowEnd }}</p>
+          </article>
         </div>
       </card>
 
-      <card title="Launch provider">
+      <card title="Launch Provider">
         <div class="space-y-2 mt-0">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -37,7 +45,7 @@
         </div>
       </card>
 
-      <card title="Mission information">
+      <card title="Mission">
         <div v-if="launch.mission" class="space-y-2">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -75,6 +83,8 @@
 <script>
 import Launch from '@structures/launch/launch';
 import Card from '@components/ui/Card';
+import { format } from 'date-fns';
+import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -87,6 +97,22 @@ export default {
     launch: {
       type: Launch,
       required: true,
+    },
+  },
+
+  computed: {
+    /**
+     * @return {string}
+     */
+    launchWindowStart() {
+      return format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT);
+    },
+
+    /**
+     * @return {string}
+     */
+    launchWindowEnd() {
+      return format(this.launch.windowEnd, LAUNCH_COUNTDOWN_FORMAT);
     },
   },
 };

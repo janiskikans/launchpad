@@ -19,7 +19,7 @@
           <button
             type="button"
             class="border border-gray-500 text-white rounded-md px-4 py-2 mt-4 w-full sm:w-auto lg:w-full xl:w-auto transition duration-500 ease select-none hover:bg-gray-600 focus:outline-none focus:shadow-outline"
-            @click="showLaunchModal = true"
+            @click="openDetailedLaunchModal()"
           >
             Launch Details
           </button>
@@ -59,6 +59,7 @@ import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
+import { disableBodyScroll } from '@helpers/uiHelper';
 
 export default {
   name: 'LaunchCard',
@@ -135,6 +136,13 @@ export default {
       }
 
       return classList;
+    },
+  },
+
+  methods: {
+    openDetailedLaunchModal() {
+      this.showLaunchModal = true;
+      disableBodyScroll();
     },
   },
 };

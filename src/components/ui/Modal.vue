@@ -1,18 +1,8 @@
 <template>
   <transition name="modal-fade">
-    <div
-      class="modal-background fixed flex justify-center items-center inset-0 z-10"
-      @click.self="closeModal"
-    >
-      <div
-        class="modal"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
-      >
-        <div
-          id="modalTitle"
-          class="px-6 py-4 flex justify-between border-b border-gray-200"
-        >
+    <div class="modal-background fixed flex justify-center items-center inset-0 z-10" @click.self="closeModal">
+      <div class="modal" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+        <div id="modalTitle" class="px-6 py-4 flex justify-between border-b border-gray-200">
           <slot v-if="hasHeader" name="header">
             Modal header
           </slot>
@@ -45,6 +35,7 @@
 
 <script>
 import CustomButton from '@components/ui/CustomButton';
+import { enableBodyScroll } from '@helpers/uiHelper';
 
 export default {
   name: 'Modal',
@@ -82,6 +73,7 @@ export default {
   methods: {
     closeModal() {
       this.$emit('close-modal');
+      enableBodyScroll();
     },
 
     onEscape() {
@@ -93,6 +85,9 @@ export default {
 
 <style lang="scss" scoped>
 .modal {
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+
   @apply bg-gray-100 shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/5;
 
   &__close-button {
