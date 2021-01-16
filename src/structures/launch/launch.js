@@ -2,6 +2,7 @@ import LaunchStatus from '@structures/launch/launchStatus';
 import LaunchServiceProvider from '@structures/launch/launchServiceProvider';
 import LaunchMission from '@structures/launch/launchMission';
 import { differenceInHours, isEqual } from 'date-fns';
+import LaunchPad from '@structures/launch/launchPad';
 
 export default class Launch {
   /** @type {number|null} */
@@ -34,6 +35,9 @@ export default class Launch {
   /** @type {LaunchMission|null} */
   mission = null;
 
+  /** @type {LaunchPad|null} */
+  pad = null;
+
   constructor(params = {}) {
     this.launchLibraryId = params.launch_library_id ?? null;
     this.name = params.name ?? '';
@@ -45,6 +49,7 @@ export default class Launch {
     this.image = params.image ?? '';
     this.launchServiceProvider = new LaunchServiceProvider(params.launch_service_provider);
     this.mission = params.mission ? new LaunchMission(params.mission) : null;
+    this.pad = params.pad ? new LaunchPad(params.pad) : null;
   }
 
   /**

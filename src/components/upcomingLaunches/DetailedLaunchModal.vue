@@ -7,15 +7,11 @@
         <div class="space-y-2 mt-0">
           <article>
             <h3 class="font-bold">Name</h3>
-            <p>
-              {{ launch.name }}
-            </p>
+            <p>{{ launch.name }}</p>
           </article>
           <article>
             <h3 class="font-bold">In Hold</h3>
-            <p>
-              {{ launch.inHold ? 'Yes' : 'No' }}
-            </p>
+            <p>{{ launch.inHold ? 'Yes' : 'No' }}</p>
           </article>
           <article>
             <h3 class="font-bold">Launch Window Start</h3>
@@ -32,15 +28,11 @@
         <div class="space-y-2 mt-0">
           <article>
             <h3 class="font-bold">Name</h3>
-            <p>
-              {{ launch.launchServiceProvider.name }}
-            </p>
+            <p>{{ launch.launchServiceProvider.name }}</p>
           </article>
           <article>
             <h3 class="font-bold">Type</h3>
-            <p>
-              {{ launch.launchServiceProvider.type ? launch.launchServiceProvider.type : 'Not specified' }}
-            </p>
+            <p>{{ launch.launchServiceProvider.type ? launch.launchServiceProvider.type : 'Not specified' }}</p>
           </article>
         </div>
       </card>
@@ -49,27 +41,19 @@
         <div v-if="launch.mission" class="space-y-2">
           <article>
             <h3 class="font-bold">Name</h3>
-            <p>
-              {{ launch.mission.name }}
-            </p>
+            <p>{{ launch.mission.name }}</p>
           </article>
           <article>
             <h3 class="font-bold">Type</h3>
-            <p>
-              {{ launch.mission.type }}
-            </p>
+            <p>{{ launch.mission.type }}</p>
           </article>
           <article>
             <h3 class="font-bold">Description</h3>
-            <p>
-              {{ launch.mission.description ? launch.mission.description : 'Not specified' }}
-            </p>
+            <p>{{ launch.mission.description ? launch.mission.description : 'Not specified' }}</p>
           </article>
           <article>
             <h3 class="font-bold">Orbit</h3>
-            <p>
-              {{ launch.mission.orbit && launch.mission.orbit.name ? launch.mission.orbit.name : 'Not specified' }}
-            </p>
+            <p>{{ launch.mission.orbit && launch.mission.orbit.name ? launch.mission.orbit.name : 'Not specified' }}</p>
           </article>
         </div>
         <div v-else>
