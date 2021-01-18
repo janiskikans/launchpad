@@ -85,10 +85,10 @@ export default {
 
 <style lang="scss" scoped>
 .modal {
-  max-height: calc(100vh - 210px);
+  max-height: calc(100vh - 150px);
   overflow-y: auto;
 
-  @apply bg-gray-100 shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/5;
+  @apply bg-gray-100 shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-4/5;
 
   &__close-button {
     @apply text-lg px-2 cursor-pointer transition duration-300 ease-in-out text-gray-700 hover:text-gray-600 focus:outline-none;

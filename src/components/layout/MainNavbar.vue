@@ -13,7 +13,12 @@
       </nav>
 
       <span class="flex order-first navbar__title">
-        <span class="ml-3 text-2xl text-gray-200">Launchpad 🚀</span>
+        <span
+          class="ml-3 text-2xl text-gray-200 transform hover:opacity-90 hover:-translate-y-1 duration-300 cursor-pointer"
+          @click="onTitleClick"
+        >
+          Launchpad 🚀
+        </span>
       </span>
       <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0"></div>
     </div>
@@ -23,6 +28,12 @@
 <script>
 export default {
   name: 'MainNavbar',
+
+  methods: {
+    onTitleClick() {
+      this.$router.push('/');
+    },
+  },
 };
 </script>
 
