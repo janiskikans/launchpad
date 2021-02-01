@@ -1,6 +1,7 @@
 export const STATUS_GO = 1;
 export const STATUS_TBD = 2;
 export const STATUS_SUCCESS = 3;
+export const STATUS_FAILURE = 4;
 
 export default class LaunchStatus {
   constructor(params = {}) {
@@ -19,6 +20,13 @@ export default class LaunchStatus {
    * @return {boolean}
    */
   isNeutral() {
-    return !this.isGood();
+    return this.id === STATUS_TBD;
+  }
+
+  /**
+   * @return {string}
+   */
+  isBad() {
+    return this.id === STATUS_FAILURE;
   }
 }

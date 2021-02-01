@@ -122,6 +122,10 @@ export default {
         return 'bg-gray-600';
       }
 
+      if (this.launch.status.isBad()) {
+        return 'bg-red-500';
+      }
+
       return '';
     },
 
@@ -133,6 +137,10 @@ export default {
 
       if (this.launch.getDistanceFromNowInHours() < 24 && this.launch.status.isGood()) {
         classList += ' border-b-4 lg:border-r-4 lg:border-b-0 border-green-500';
+      }
+
+      if (this.launch.status.isBad()) {
+        classList += ' border-b-4 lg:border-r-4 lg:border-b-0 border-red-500';
       }
 
       return classList;
