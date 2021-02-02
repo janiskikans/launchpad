@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header>
+    <header class="mt-4">
       <main-navbar />
     </header>
 

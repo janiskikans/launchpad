@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-4 py-2">
-      <img :src="launch.image" :alt="launch.name" class="rounded-lg col-span-3" />
+  <div class="detailed-launch-modal">
+    <div class="grid grid-cols-1 md:grid-cols-6 xl:grid-cols-9 gap-4 py-2">
+      <!-- <img :src="launch.image" :alt="launch.name" class="rounded-lg col-span-3" /> -->
+      <div
+        class="detailed-launch-modal__launch-image rounded-lg col-span-3 row-span-2 h-96 md:h-auto"
+        :style="{ backgroundImage: 'url(' + launch.image + ')' }"
+      ></div>
 
       <card title="General" class="col-span-3">
         <div class="space-y-2 mt-0">
@@ -24,7 +28,7 @@
         </div>
       </card>
 
-      <card title="Launch Provider" class="col-span-2">
+      <card title="Launch Provider" class="col-span-3">
         <div class="space-y-2 mt-0">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -37,7 +41,7 @@
         </div>
       </card>
 
-      <card title="Mission" class="col-span-2">
+      <card title="Mission" class="col-span-3">
         <div v-if="launch.mission" class="space-y-2">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -61,7 +65,7 @@
         </div>
       </card>
 
-      <card title="Launch Location" class="col-span-2">
+      <card title="Launch Location" class="col-span-3">
         <div v-if="launch.pad" class="space-y-2">
           <article>
             <h3 class="font-bold">Location</h3>
@@ -117,3 +121,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.detailed-launch-modal {
+  &__launch-image {
+    @apply bg-cover bg-no-repeat bg-center;
+  }
+}
+</style>
