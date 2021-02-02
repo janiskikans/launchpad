@@ -16,7 +16,7 @@
         <transition mode="out-in" name="fade-in">
           <span
             :key="title"
-            class="ml-3 text-2xl text-gray-200 transform hover:opacity-90 hover:-translate-y-1 duration-300 cursor-pointer"
+            class="ml-3 text-2xl text-gray-200 transform hover:opacity-90 hover:-translate-y-1 duration-300 cursor-pointer whitespace-nowrap"
             @click="onTitleClick"
           >
             {{ title }} 🚀
@@ -52,9 +52,13 @@ export default {
      * @param {string} newName
      */
     currentRouteName(newName) {
+      if (this.titleChangeTimeout) {
+        clearTimeout(this.titleChangeTimeout);
+      }
+
       this.title = newName;
 
-      setTimeout(() => {
+      this.titleChangeTimeout = setTimeout(() => {
         this.setDefaultTitle();
       }, 3000);
     },
