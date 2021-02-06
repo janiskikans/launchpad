@@ -1,23 +1,23 @@
 <template>
-  <div class="text-white flex flex-row w-auto lg:w-64">
+  <div class="text-white flex flex-row countdown">
     <div v-if="showTMinus" class="text-3xl mr-2">T{{ signAfterT }}</div>
     <div class="text-center">
-      <div class="text-3xl">{{ days | atLeastTwoDigits }}</div>
+      <div class="text-3xl w-10">{{ days | atLeastTwoDigits }}</div>
       <div class="text-sm text-gray-200">DAYS</div>
     </div>
     <div class="text-2xl mx-2">:</div>
     <div class="text-center">
-      <div class="text-3xl">{{ hours | atLeastTwoDigits }}</div>
+      <div class="text-3xl w-10">{{ hours | atLeastTwoDigits }}</div>
       <div class="text-sm text-gray-200">HOURS</div>
     </div>
     <div class="text-2xl mx-2">:</div>
     <div class="text-center">
-      <div class="text-3xl">{{ minutes | atLeastTwoDigits }}</div>
+      <div class="text-3xl w-10">{{ minutes | atLeastTwoDigits }}</div>
       <div class="text-sm text-gray-200">MIN</div>
     </div>
     <div class="text-2xl mx-2">:</div>
     <div class="text-center">
-      <div class="text-3xl">{{ seconds | atLeastTwoDigits }}</div>
+      <div class="text-3xl w-10">{{ seconds | atLeastTwoDigits }}</div>
       <div class="text-sm text-gray-200">SEC</div>
     </div>
   </div>
@@ -133,3 +133,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import '@assets/scss/_variables.scss';
+
+.countdown {
+  width: auto;
+
+  @media (min-width: $media-breakpoint-lg) {
+    width: 17rem;
+  }
+}
+</style>
