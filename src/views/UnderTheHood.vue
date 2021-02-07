@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    Under The Hood
+    Test
   </div>
 </template>
 

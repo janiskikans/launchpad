@@ -1,11 +1,12 @@
 <template>
   <div class="detailed-launch-modal">
-    <div class="grid grid-cols-1 md:grid-cols-6 xl:grid-cols-9 gap-4 py-2">
-      <!-- <img :src="launch.image" :alt="launch.name" class="rounded-lg col-span-3" /> -->
+    <div class="grid grid-cols-1 md:grid-cols-6 xl:grid-cols-9 gap-4">
       <div
         class="detailed-launch-modal__launch-image rounded-lg col-span-3 row-span-2 h-96 md:h-auto"
         :style="{ backgroundImage: 'url(' + launch.image + ')' }"
-      ></div>
+      >
+        <launch-status-badge :launch-status="launch.status" class="absolute top-10 left-10" />
+      </div>
 
       <card title="General" class="col-span-3">
         <div class="space-y-2 mt-0">
@@ -53,7 +54,9 @@
           </article>
           <article>
             <h3 class="font-bold">Orbit</h3>
-            <p>{{ launch.mission.orbit && launch.mission.orbit.name ? launch.mission.orbit.name : 'Not specified' }}</p>
+            <p>
+              {{ launch.mission.orbit && launch.mission.orbit.name ? launch.mission.orbit.name : 'Not specified' }}
+            </p>
           </article>
           <article>
             <h3 class="font-bold">Description</h3>
@@ -89,12 +92,14 @@ import Launch from '@structures/launch/launch';
 import Card from '@components/ui/Card';
 import { format } from 'date-fns';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
+import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 
 export default {
   name: 'DetailedLaunchModal',
 
   components: {
     Card,
+    LaunchStatusBadge,
   },
 
   props: {

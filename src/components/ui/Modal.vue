@@ -2,7 +2,7 @@
   <transition name="modal-fade">
     <div class="modal-background fixed flex justify-center items-center inset-0 z-10" @click.self="closeModal">
       <div class="modal" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-        <div id="modalTitle" class="px-6 py-4 flex justify-between border-b border-gray-200">
+        <div id="modalTitle" class="px-6 py-4 flex justify-between">
           <slot v-if="hasHeader" name="header">
             Modal header
           </slot>

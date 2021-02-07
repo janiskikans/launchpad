@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@animxyz/vue": "^0.4.0",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "autoprefixer": "^9",
     "axios": "^0.21.0",

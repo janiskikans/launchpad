@@ -9,16 +9,14 @@
 
     <div class="flex flex-col xl:flex-row w-full">
       <div class="p-4 h-full xl:w-full flex flex-col lg:justify-between">
-        <div>
+        <div class="my-auto">
           <div class="text-2xl text-gray-50">{{ launch.name }}</div>
           <div class="text-gray-300">
             {{ launch.launchServiceProvider.name }}
           </div>
-        </div>
-        <div class="mt-4">
           <button
             type="button"
-            class="border border-gray-500 text-white rounded-md px-4 py-2 mt-4 w-full sm:w-auto lg:w-full xl:w-auto transition duration-500 ease select-none hover:bg-gray-600 focus:outline-none focus:shadow-outline"
+            class="border border-gray-500 text-white rounded-md px-4 py-2 mt-4 lg:mt-6 xl:mt-4 w-full lg:w-full xl:w-auto transition duration-500 ease select-none hover:bg-gray-600 focus:outline-none focus:shadow-outline"
             @click="openDetailedLaunchModal()"
           >
             Launch Details
@@ -34,11 +32,11 @@
             </div>
             <countdown-timer :end-time="launch.net.getTime()" />
           </div>
-          <div class="text-white uppercase text-center text-2xl lg:ml-12 xl:ml-0 mt-4 mb-2 lg:my-auto xl:mt-4 xl:mb-0">
-            <span class="rounded-lg px-1.5 py-1 opacity-90" :class="statusClass">
-              {{ launch.status.name }}
-            </span>
-          </div>
+
+          <launch-status-badge
+            :launch-status="launch.status"
+            class="lg:ml-12 xl:ml-0 mt-4 mb-2 lg:my-auto xl:mt-5 xl:mb-0"
+          />
         </div>
       </div>
     </div>
@@ -60,6 +58,7 @@ import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
 import { disableBodyScroll } from '@helpers/uiHelper';
+import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 
 export default {
   name: 'LaunchCard',
@@ -68,6 +67,7 @@ export default {
     CountdownTimer,
     Modal: () => import('@components/ui/Modal'),
     DetailedLaunchModal: () => import('@components/upcomingLaunches/DetailedLaunchModal'),
+    LaunchStatusBadge,
   },
 
   props: {
@@ -80,6 +80,7 @@ export default {
   data() {
     return {
       showLaunchModal: false,
+      showDetailCollapse: false,
     };
   },
 

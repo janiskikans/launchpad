@@ -5,7 +5,9 @@
     </header>
 
     <keep-alive include="UpcomingLaunches">
-      <router-view />
+      <XyzTransition xyz="fade duration-2" mode="out-in">
+        <router-view />
+      </XyzTransition>
     </keep-alive>
 
     <main-footer />
@@ -30,9 +32,11 @@ export default {
 html,
 body {
   @apply bg-gray-800;
+
+  font-family: 'Open Sans', sans-serif;
 }
 
-.router-link-active {
-  @apply text-gray-200;
+#app {
+  font-family: 'Open Sans', sans-serif;
 }
 </style>

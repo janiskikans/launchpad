@@ -3,12 +3,12 @@
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
         <div id="nav">
-          <router-link to="/" class="mr-5 hover:text-gray-500">
+          <!-- <router-link to="/" tag="button" class="nav-button mr-2">
             Upcoming Launches
           </router-link>
-          <router-link to="/under-the-hood" class="mr-5 hover:text-gray-500">
+          <router-link to="/under-the-hood" tag="button" class="nav-button">
             Under the Hood
-          </router-link>
+          </router-link> -->
         </div>
       </nav>
 
@@ -16,7 +16,7 @@
         <transition mode="out-in" name="fade-in">
           <span
             :key="title"
-            class="ml-3 text-2xl text-gray-200 transform hover:opacity-90 hover:-translate-y-1 duration-300 cursor-pointer whitespace-nowrap"
+            class="ml-3 text-2xl text-gray-200 transform hover:opacity-90 duration-300 cursor-pointer whitespace-nowrap"
             @click="onTitleClick"
           >
             {{ title }} 🚀
@@ -66,7 +66,9 @@ export default {
 
   methods: {
     onTitleClick() {
-      this.$router.push('/');
+      if (this.$route.path !== '/') {
+        this.$router.push('/');
+      }
     },
 
     setDefaultTitle() {
@@ -94,5 +96,13 @@ export default {
 .fade-in-enter,
 .fade-in-leave-to {
   opacity: 0;
+}
+
+.nav-button {
+  @apply md:text-lg rounded-lg py-1 md:py-2 px-2 md:px-4 hover:bg-gray-700 transition duration-200 ease-in-out select-none focus:outline-none;
+}
+
+.router-link-exact-active {
+  @apply text-gray-200;
 }
 </style>
