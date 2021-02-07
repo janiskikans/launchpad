@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8235cdd9-2637-408f-800c-d0f8ea5111b2/deploy-status)](https://app.netlify.com/sites/launchpadapp/deploys)
+
 # :rocket: Launchpad
 
 A simple app for rocket launch and space enthusiasts. An easy way to look up upcoming launches and more at a glance.
