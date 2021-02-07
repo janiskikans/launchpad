@@ -6,6 +6,7 @@ A simple app for rocket launch and space enthusiasts. An easy way to look up upc
 
 - [Vue.js](https://vuejs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [AnimXYZ](https://animxyz.com/)
 - [Launch Library v2.0.0](https://thespacedevs.com/llapi) by [The Space Devs](https://thespacedevs.com/)
 
 ## :construction: Development Environment Set-up
