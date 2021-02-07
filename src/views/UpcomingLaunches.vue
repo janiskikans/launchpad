@@ -1,16 +1,18 @@
 <template>
   <div class="container mx-auto">
-    <launch-card
-      v-for="(launch, index) in upcomingLaunches"
-      :key="index"
-      :launch="launch"
-      class="m-4 mb-12 lg:max-h-96 lg:max-w-3/4 lg:mx-auto"
-    />
+    <XyzTransitionGroup class="item-grid" xyz="fade up back stagger-0.5">
+      <launch-card
+        v-for="(launch, index) in upcomingLaunches"
+        :key="index"
+        :launch="launch"
+        class="m-4 mb-12 lg:max-h-96 lg:max-w-3/4 lg:mx-auto"
+      />
+    </XyzTransitionGroup>
   </div>
 </template>
 
 <script>
-import LaunchCard from '@components/LaunchCard';
+import LaunchCard from '@components/upcomingLaunches/LaunchCard';
 import { getUpcomingLaunches } from '@services/launchService';
 
 export default {

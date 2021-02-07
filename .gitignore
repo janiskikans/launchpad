@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-/testData
+# /testData
+.yarn-error.log
 
 
 # local env files

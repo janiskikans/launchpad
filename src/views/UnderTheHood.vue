@@ -1,6 +1,6 @@
 <template>
-  <div>
-    Made by Janis Kikans
+  <div class="container mx-auto">
+    Test
   </div>
 </template>
 
