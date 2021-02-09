@@ -4,6 +4,7 @@
       <div
         class="detailed-launch-modal__launch-image rounded-lg col-span-3 row-span-2 h-96 md:h-auto"
         :style="{ backgroundImage: 'url(' + launch.image + ')' }"
+        :title="launch.name"
       >
         <launch-status-badge :launch-status="launch.status" class="absolute top-10 left-10" />
       </div>

@@ -6,7 +6,9 @@ import VueAnimXYZ from '@animxyz/vue';
 import router from './router';
 
 import '@assets/scss/main.scss';
-import '@fortawesome/fontawesome-free/js/all';
+import '@fortawesome/fontawesome-free/js/fontawesome.min.js';
+import '@fortawesome/fontawesome-free/js/solid.min.js';
+import '@fortawesome/fontawesome-free/js/brands.min.js';
 import '@animxyz/core';
 
 Vue.use(VTooltip);
