@@ -14,7 +14,7 @@
         "name": "Go"
       },
       "net": "2021-02-12T05:25:00Z",
-      "window_end": "2021-02-12T06:25:00Z",
+      "window_end": "2021-02-12T05:25:00Z",
       "window_start": "2021-02-12T05:25:00Z",
       "inhold": false,
       "tbdtime": false,
@@ -55,26 +55,26 @@
         }
       },
       "pad": {
-        "id": 87,
-        "url": "https://ll.thespacedevs.com/2.1.0/pad/87/",
-        "agency_id": null,
-        "name": "Launch Complex 39A",
+        "id": 80,
+        "url": "https://ll.thespacedevs.com/2.1.0/pad/80/",
+        "agency_id": 121,
+        "name": "Space Launch Complex 40",
         "info_url": null,
-        "wiki_url": "https://en.wikipedia.org/wiki/Kennedy_Space_Center_Launch_Complex_39#Launch_Pad_39A",
-        "map_url": "http://maps.google.com/maps?q=28.608+N,+80.604+W",
-        "latitude": "28.60822681",
-        "longitude": "-80.60428186",
+        "wiki_url": "https://en.wikipedia.org/wiki/Cape_Canaveral_Air_Force_Station_Space_Launch_Complex_40",
+        "map_url": "http://maps.google.com/maps?q=28.56194122,-80.57735736",
+        "latitude": "28.56194122",
+        "longitude": "-80.57735736",
         "location": {
-          "id": 27,
-          "url": "https://ll.thespacedevs.com/2.1.0/location/27/",
-          "name": "Kennedy Space Center, FL, USA",
+          "id": 12,
+          "url": "https://ll.thespacedevs.com/2.1.0/location/12/",
+          "name": "Cape Canaveral, FL, USA",
           "country_code": "USA",
-          "map_image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launch_images/location_27_20200803142447.jpg",
-          "total_launch_count": 183,
-          "total_landing_count": 0
+          "map_image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launch_images/location_12_20200803142519.jpg",
+          "total_launch_count": 211,
+          "total_landing_count": 20
         },
-        "map_image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launch_images/pad_87_20200803143537.jpg",
-        "total_launch_count": 126
+        "map_image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launch_images/pad_80_20200803143323.jpg",
+        "total_launch_count": 66
       },
       "webcast_live": false,
       "image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launch_images/falcon2520925_image_20210202223956.png",
@@ -166,8 +166,8 @@
       "slug": "soyuz-21a-progress-ms-16-77p",
       "name": "Soyuz 2.1a | Progress MS-16 (77P)",
       "status": {
-        "id": 2,
-        "name": "TBD"
+        "id": 1,
+        "name": "Go"
       },
       "net": "2021-02-15T04:45:00Z",
       "window_end": "2021-02-15T04:45:00Z",
@@ -191,10 +191,10 @@
           "id": 24,
           "launch_library_id": 49,
           "url": "https://ll.thespacedevs.com/2.1.0/config/launcher/24/",
-          "name": "Soyuz 2.1A",
+          "name": "Soyuz 2.1a",
           "family": "Soyuz",
-          "full_name": "Soyuz 2.1A",
-          "variant": "2.1A"
+          "full_name": "Soyuz 2.1a",
+          "variant": ""
         }
       },
       "mission": {
@@ -285,11 +285,11 @@
       "id": "f1a8d62e-709d-4e89-ade9-a8779492c7a9",
       "url": "https://ll.thespacedevs.com/2.1.0/launch/f1a8d62e-709d-4e89-ade9-a8779492c7a9/",
       "launch_library_id": 2044,
-      "slug": "antares-230-cygnus-crs-2-ng-15",
-      "name": "Antares 230+ | Cygnus CRS-2 NG-15",
+      "slug": "antares-230-cygnus-crs-2-ng-15-ss-katherine-johnso",
+      "name": "Antares 230+ | Cygnus CRS-2 NG-15 (S.S. Katherine Johnson)",
       "status": {
-        "id": 2,
-        "name": "TBD"
+        "id": 1,
+        "name": "Go"
       },
       "net": "2021-02-20T17:36:00Z",
       "window_end": "2021-02-20T17:36:00Z",
@@ -322,7 +322,7 @@
       "mission": {
         "id": 1236,
         "launch_library_id": null,
-        "name": "Cygnus CRS-2 NG-15 (Katherine Johnson)",
+        "name": "Cygnus CRS-2 NG-15 (S.S. Katherine Johnson)",
         "description": "This is the 15th planned flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 14th flight to the International Space Station under the Commercial Resupply Services contract with NASA. This Cygnus spacecraft carries the name of American mathematician Katherine Johnson, whose calculations of orbital mechanics as a NASA employee were critical to the success of the first and subsequent U.S. crewed spaceflights.",
         "launch_designator": null,
         "type": "Resupply",
@@ -708,8 +708,8 @@
       "slug": "long-march-3b-fengyun-4b",
       "name": "Long March 3B | Fengyun-4B",
       "status": {
-        "id": 7,
-        "name": "Partial Failure"
+        "id": 2,
+        "name": "TBD"
       },
       "net": "2021-02-28T00:00:00Z",
       "window_end": "2021-02-28T00:00:00Z",
