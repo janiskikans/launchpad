@@ -15,14 +15,13 @@
 </template>
 
 <script>
-import MainFooter from '@components/layout/MainFooter';
 import MainNavbar from '@components/layout/MainNavbar';
 
 export default {
   name: 'App',
 
   components: {
-    MainFooter,
+    MainFooter: () => import('@components/layout/MainFooter'),
     MainNavbar,
   },
 };
