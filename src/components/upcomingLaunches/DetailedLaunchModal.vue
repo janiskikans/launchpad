@@ -93,7 +93,7 @@ import Launch from '@structures/launch/launch';
 import Card from '@components/ui/Card';
 import { format } from 'date-fns';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
-import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
+import LaunchStatusBadge from '@components/upcomingLaunches/LaunchStatusBadge';
 
 export default {
   name: 'DetailedLaunchModal',

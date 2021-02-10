@@ -58,7 +58,7 @@ import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
 import { disableBodyScroll } from '@helpers/uiHelper';
-import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
+import LaunchStatusBadge from '@components/upcomingLaunches/LaunchStatusBadge';
 
 export default {
   name: 'LaunchCard',
