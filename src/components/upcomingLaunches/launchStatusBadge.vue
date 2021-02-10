@@ -10,6 +10,8 @@
 import LaunchStatus from '@structures/launch/launchStatus';
 
 export default {
+  name: 'LaunchStatusBadge',
+
   props: {
     launchStatus: {
       type: LaunchStatus,
