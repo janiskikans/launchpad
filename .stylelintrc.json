@@ -1,5 +1,6 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": ["stylelint-config-recommended-scss"],
+  "plugins": ["stylelint-scss"],
   "rules": {
     "at-rule-no-unknown": [
       true,
@@ -9,11 +10,12 @@
     ],
     "declaration-block-trailing-semicolon": null,
     "no-descending-specificity": null,
-    "selector-type-no-unknown": [
+    "selector-pseudo-element-no-unknown": [
       true,
       {
-        "ignoreTypes": ["/^ion-/"]
+        "ignorePseudoElements": ["v-deep"]
       }
-    ]
+    ],
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["/^ion-/"] }]
   }
 }
