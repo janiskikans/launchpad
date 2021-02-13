@@ -8,6 +8,12 @@
       }
     ],
     "declaration-block-trailing-semicolon": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["/^ion-/"]
+      }
+    ]
   }
 }
