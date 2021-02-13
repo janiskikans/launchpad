@@ -33,11 +33,7 @@ export default {
      * @return {string}
      */
     atLeastTwoDigits(value) {
-      return value.toLocaleString('en-US', {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-        signDisplay: 'never',
-      });
+      return ('0' + Math.abs(value)).slice(-2);
     },
   },
 
