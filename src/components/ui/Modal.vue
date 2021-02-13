@@ -13,7 +13,7 @@
             aria-label="Close modal"
             @click="closeModal"
           >
-            <i class="fas fa-times-circle"></i>
+            <ion-icon name="close-outline" />
           </button>
         </div>
 

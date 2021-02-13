@@ -1,4 +1,5 @@
 const path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   pages: {
@@ -19,5 +20,10 @@ module.exports = {
         '@helpers': path.resolve(__dirname, 'src/helpers'),
       },
     },
+    plugins: [
+      new StyleLintPlugin({
+        files: ['src/**/*.{vue,scss}'],
+      }),
+    ],
   },
 };

@@ -6,15 +6,13 @@ import VueAnimXYZ from '@animxyz/vue';
 import router from './router';
 
 import '@assets/scss/main.scss';
-import '@fortawesome/fontawesome-free/js/fontawesome.min.js';
-import '@fortawesome/fontawesome-free/js/solid.min.js';
-import '@fortawesome/fontawesome-free/js/brands.min.js';
 import '@animxyz/core';
 
 Vue.use(VTooltip);
 Vue.use(VueAnimXYZ);
 
 Vue.config.productionTip = false;
+Vue.config.ignoredElements = [/^ion-/];
 
 new Vue({
   router,
