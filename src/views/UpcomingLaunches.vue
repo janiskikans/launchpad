@@ -5,7 +5,7 @@
         v-for="(launch, index) in upcomingLaunches"
         :key="index"
         :launch="launch"
-        class="m-4 mb-12 lg:max-h-96 lg:max-w-3/4 lg:mx-auto"
+        class="mx-4 mb-12 lg:max-h-96 lg:max-w-3/4 lg:mx-auto"
       />
     </XyzTransitionGroup>
   </div>

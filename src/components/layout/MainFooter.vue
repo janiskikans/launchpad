@@ -3,7 +3,9 @@
     <footer class="text-gray-500 body-font">
       <div class="text-center mb-8">
         <div class="mb-2">
-          Made by Janis Kikans.
+          Made in
+          <country-flag country="lv" size="small" rounded />
+          by Janis Kikans.
         </div>
         <a
           class="text-gray-500 hover:text-gray-300 mr-3"
@@ -27,8 +29,14 @@
 </template>
 
 <script>
+import CountryFlag from 'vue-country-flag';
+
 export default {
   name: 'MainFooter',
+
+  components: {
+    CountryFlag,
+  },
 };
 </script>
 
