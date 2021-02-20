@@ -1,7 +1,16 @@
 <template>
   <div class="container mx-auto px-4 lg:px-36 xl:px-52 mb-12">
-    <XyzTransitionGroup appear class="item-grid space-y-12" xyz="fade up stagger-2">
-      <div :key="1" class="text-center text-gray-100 p-4 py-6 bg-gray-700 rounded-sm shadow-lg">
+    <XyzTransitionGroup appear class="item-grid space-y-6 lg:space-y-12" xyz="fade up stagger-2">
+      <img
+        :key="1"
+        src="@assets/images/spacex_launch_wide_v2-min.png"
+        alt="spacex launch"
+        width="1946"
+        height="660"
+        class="rounded-sm shadow-lg"
+      />
+
+      <div :key="2" class="text-center text-gray-100 p-4 py-8 bg-gray-700 rounded-sm shadow-lg">
         <h1 class="text-3xl font-light mb-6">
           About
           <b>Launchpad</b>
@@ -12,17 +21,18 @@
         </p>
       </div>
 
-      <div :key="2" class="text-center text-gray-100 p-4 py-8">
+      <div :key="3" class="text-center text-gray-100 p-4 py-8">
         <h1 class="text-3xl font-light mb-6">Under the Hood</h1>
         <p class="text-lg text-gray-200">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore perferendis earum tempora accusamus nobis
-          aspernatur quod saepe nam quibusdam aliquid consectetur expedita pariatur eum voluptatem commodi, ipsam
-          distinctio ex? Maiores reprehenderit, inventore unde recusandae, illo ut rem impedit eligendi, pariatur
-          doloribus rerum expedita earum ducimus voluptas quis quaerat quasi reiciendis?
+          Launchpad under the hood uses the awesome
+          <better-link href="https://thespacedevs.com/llapi" text="Launch Library 2" is-external />
+          API built by
+          <better-link href="https://thespacedevs.com/" text="The Space Devs" is-external />
+          as the source of data.
         </p>
       </div>
 
-      <div :key="3" class="text-center text-gray-100 rounded-sm p-4 py-6 bg-gray-700 shadow-lg">
+      <div :key="4" class="text-center text-gray-100 rounded-sm p-4 py-8 bg-gray-700 shadow-lg">
         <div class="flex flex-col lg:flex-row items-center">
           <img
             src="@assets/images/janis_kikans_profile.jpeg"
@@ -49,7 +59,11 @@
 </template>
 
 <script>
+import BetterLink from '@components/utils/BetterLink';
+
 export default {
   name: 'UnderTheHood',
+
+  components: { BetterLink },
 };
 </script>

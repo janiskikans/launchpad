@@ -71,7 +71,7 @@ export default {
 }
 
 .nav-button {
-  @apply md:text-lg rounded-lg py-1 md:py-2 px-2 md:px-4 hover:text-gray-100 transition duration-200 ease-in-out select-none focus:outline-none;
+  @apply md:text-xl py-1 md:py-2 px-2 md:px-4 hover:text-gray-100 transition duration-200 ease-in-out select-none focus:outline-none;
 }
 
 .router-link-exact-active {
