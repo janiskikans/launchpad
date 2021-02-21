@@ -1,38 +1,66 @@
 <template>
-  <div class="container mx-auto px-4 lg:px-36 xl:px-52 mb-12">
-    <XyzTransitionGroup appear class="item-grid space-y-6 lg:space-y-12" xyz="fade up stagger-2">
-      <img
-        :key="1"
-        src="@assets/images/spacex_launch_wide_v2-min.png"
-        alt="spacex launch"
-        width="1946"
-        height="660"
-        class="rounded-sm shadow-lg"
-      />
+  <div class="container mx-auto px-4 lg:px-32 3xl:px-56 mb-12">
+    <XyzTransitionGroup appear class="item-grid" xyz="fade up stagger-2">
+      <div :key="1" class="rounded-sm shadow-md mb-12 lg:mb-16 relative hidden md:block">
+        <img
+          :key="1"
+          src="@assets/images/spacex_launch_wide_v2-min.png"
+          alt="spacex launch"
+          width="1946"
+          height="660"
+        />
+        <div class="text-white text-opacity-60 absolute bottom-5 left-5">
+          <span>
+            Photo by
+            <better-link
+              href="https://unsplash.com/@spacex?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+              text="SpaceX"
+              is-external
+              has-simple-style
+            />
+            on
+            <better-link
+              href="https://unsplash.com/s/photos/rocket?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+              text="Unsplash"
+              is-external
+              has-simple-style
+            />
+          </span>
+        </div>
+      </div>
 
-      <div :key="2" class="text-center text-gray-100 p-4 py-8 bg-gray-700 rounded-sm shadow-lg">
-        <h1 class="text-3xl font-light mb-6">
+      <div :key="2" class="text-center text-gray-100 p-6 py-12 mb-8 lg:mb-16 bg-gray-700 rounded-sm shadow-md">
+        <h1 class="text-3xl font-light mb-4">
           About
           <b>Launchpad</b>
         </h1>
         <p class="text-lg text-gray-200">
-          Launchpad is a handy app for rocket launch and space enthusiasts. An easy way to look up upcoming launches and
+          Launchpad is a handy app for rocket launch and space enthusiasts. An easy way to lookup upcoming launches and
           more at a glance.
+          <br />
+          Currently, Launchpad provides a minimalistic and simple overview of upcoming orbital and suborbital launches
+          while also allowing to view more detailed launch information.
+          <br />
+          Please take into account that Launchpad is currently in its early stages and is just a side-project.
         </p>
       </div>
 
-      <div :key="3" class="text-center text-gray-100 p-4 py-8">
-        <h1 class="text-3xl font-light mb-6">Under the Hood</h1>
-        <p class="text-lg text-gray-200">
+      <div :key="3" class="text-center text-gray-100 mb-8 lg:mb-16 p-6 py-12">
+        <h1 class="text-3xl font-light mb-4">Under the Hood</h1>
+        <p class="text-gray-200 text-lg">
           Launchpad under the hood uses the awesome
           <better-link href="https://thespacedevs.com/llapi" text="Launch Library 2" is-external />
           API built by
           <better-link href="https://thespacedevs.com/" text="The Space Devs" is-external />
           as the source of data.
+          <br />
+          A more detailed up-to-date list of technologies used can be found on our
+          <better-link href="https://github.com/janiskikans/launchpad" text="GitHub repository" is-external />
+          <span>'s readme.</span>
         </p>
       </div>
 
-      <div :key="4" class="text-center text-gray-100 rounded-sm p-4 py-8 bg-gray-700 shadow-lg">
+      <div :key="4" class="text-center text-gray-100 rounded-sm p-6 py-12 mb-8 lg:mb-16 bg-gray-700 shadow-md">
         <div class="flex flex-col lg:flex-row items-center">
           <img
             src="@assets/images/janis_kikans_profile.jpeg"
@@ -42,15 +70,25 @@
             class="rounded-full m-6 shadow-md hover:"
           />
           <div>
-            <h1 class="text-3xl font-light mb-6">
+            <h1 class="text-3xl font-light mb-4">
               Author
             </h1>
-            <p class="text-lg text-gray-200">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus aliquam praesentium minus reiciendis
-              incidunt repudiandae adipisci dolores officiis obcaecati dolore deleniti voluptate nisi explicabo
-              similique, amet magni rem, maxime blanditiis nobis? Doloribus quaerat ab assumenda explicabo sint maiores
-              excepturi architecto.
-            </p>
+            <div class="text-lg text-gray-200">
+              <p>
+                <b>Hello!</b>
+                I am Janis, and I am a Full Stack Web Developer from
+                <better-link href="https://maps.google.com/?q=latvia" text="Riga, Latvia" is-external />
+                (that small country between Estonia and Lithuania in Northern Europe). As you maybe have noticed based
+                on this app I am also a hobby-level space and rocket enthusiast.
+              </p>
+              <p class="text-lg font-mono mt-4 md:mt-2">
+                <b>Web Developer</b>
+                +
+                <b>space/rocket enthusiast</b>
+                =
+                <b>Launchpad</b>
+              </p>
+            </div>
           </div>
         </div>
       </div>

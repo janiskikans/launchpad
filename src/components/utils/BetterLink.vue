@@ -1,5 +1,5 @@
 <template>
-  <a :rel="relContent" :href="href" :target="target" class="better-link">{{ text }}</a>
+  <a :rel="relContent" :href="href" :target="target" class="better-link" :class="additionalLinkStyle">{{ text }}</a>
 </template>
 
 <script>
@@ -25,6 +25,11 @@ export default {
       required: false,
       default: true,
     },
+    hasSimpleStyle: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 
   computed: {
@@ -41,14 +46,25 @@ export default {
     target() {
       return this.openInNewTab ? '_blank' : '';
     },
+
+    /**
+     * @return {string}
+     */
+    additionalLinkStyle() {
+      return this.hasSimpleStyle ? 'better-link--simple' : '';
+    },
   },
 };
 </script>
 
 <style lang="scss">
 .better-link {
-  @apply transition duration-500 ease-in-out;
-  @apply font-semibold  text-yellow-300 hover:text-yellow-200;
-  @apply border-b-2 border-yellow-300 border-dashed hover:border-yellow-200;
+  @apply transition duration-300 ease-in-out;
+  @apply font-semibold  text-blue-400 hover:text-yellow-300;
+  @apply border-b-2 border-dashed border-blue-400 hover:border-yellow-300 border-opacity-0 hover:border-opacity-100;
+
+  &--simple {
+    @apply text-white border-none;
+  }
 }
 </style>

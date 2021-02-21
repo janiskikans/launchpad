@@ -20,17 +20,17 @@
             <p>{{ launch.inHold ? 'Yes' : 'No' }}</p>
           </article>
           <article>
-            <h3 class="font-bold">Launch Window Start</h3>
+            <h3 class="font-bold">Window Start</h3>
             <p>{{ launchWindowStart }}</p>
           </article>
           <article>
-            <h3 class="font-bold">Launch Window End</h3>
+            <h3 class="font-bold">Window End</h3>
             <p>{{ launchWindowEnd }}</p>
           </article>
         </div>
       </card>
 
-      <card title="Launch Provider" class="col-span-3">
+      <card title="Provider" class="col-span-3">
         <div class="space-y-2 mt-0">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -69,7 +69,7 @@
         </div>
       </card>
 
-      <card title="Launch Location" class="col-span-3">
+      <card title="Location" class="col-span-3">
         <div v-if="launch.pad" class="space-y-2">
           <article>
             <h3 class="font-bold">Location</h3>
