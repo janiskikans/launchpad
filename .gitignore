@@ -4,7 +4,6 @@ node_modules
 # /testData
 .yarn-error.log
 
-
 # local env files
 .env.local
 .env.*.local
@@ -23,3 +22,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify
