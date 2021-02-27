@@ -17,7 +17,7 @@
           </button>
         </div>
 
-        <div id="modalDescription" class="relative px-6 py-4">
+        <div id="modalDescription" class="relative px-6 py-2">
           <slot name="body">
             Modal body
           </slot>
@@ -91,7 +91,7 @@ export default {
   @apply bg-gray-100 shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/4 3xl:w-1/2;
 
   &__close-button {
-    @apply text-lg px-2 cursor-pointer transition duration-300 ease-in-out text-gray-700 hover:text-gray-600 focus:outline-none;
+    @apply text-lg px-2 cursor-pointer transition duration-300 ease-in-out text-gray-500 hover:text-gray-900 focus:outline-none;
   }
 }
 

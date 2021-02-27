@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <XyzTransitionGroup class="item-grid" xyz="fade up back stagger-2">
+    <XyzTransitionGroup class="item-grid" xyz="fade up back stagger-1.5">
       <launch-card
         v-for="(launch, index) in upcomingLaunches"
         :key="index"
