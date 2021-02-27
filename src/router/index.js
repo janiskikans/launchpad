@@ -13,10 +13,10 @@ const routes = [
     meta: { title: 'Upcoming Launches' },
   },
   {
-    path: '/under-the-hood',
-    name: 'Under the Hood',
-    component: () => import(/* webpackChunkName: "underTheHood" */ '@views/UnderTheHood.vue'),
-    meta: { title: 'Under the Hood' },
+    path: '/about',
+    name: 'About',
+    component: () => import(/* webpackChunkName: "about" */ '@views/About.vue'),
+    meta: { title: 'About' },
   },
 ];
 

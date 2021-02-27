@@ -5,6 +5,7 @@ import { addHours, isPast, getUnixTime, fromUnixTime } from 'date-fns';
 import upcomingLaunchData from '../../testData/upcoming.json';
 
 const UPCOMING_LAUNCH_STORE_KEY = 'upcomingLaunchData';
+const CACHE_DURATION_IN_HOURS = 1;
 
 /**
  * Get upcoming launches from API and return array of launches
@@ -66,7 +67,7 @@ function getStoredUpcomingLaunches() {
 function storeRawUpcomingLaunchData(rawLaunchData) {
   const upcomingLaunchData = {
     rawLaunchData,
-    expiresAt: getUnixTime(addHours(Date.now(), 2)),
+    expiresAt: getUnixTime(addHours(Date.now(), CACHE_DURATION_IN_HOURS)),
   };
 
   try {

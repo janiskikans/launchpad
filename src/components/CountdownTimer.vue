@@ -61,28 +61,28 @@ export default {
      * @return {number}
      */
     days() {
-      return Math.floor(this.remainingTime / 60 / 60 / 24);
+      return Math.floor(Math.abs(this.remainingTime) / 60 / 60 / 24);
     },
 
     /**
      * @return {number}
      */
     hours() {
-      return Math.floor(this.remainingTime / 60 / 60) % 24;
+      return Math.floor(Math.abs(this.remainingTime) / 60 / 60) % 24;
     },
 
     /**
      * @return {number}
      */
     minutes() {
-      return Math.floor(this.remainingTime / 60) % 60;
+      return Math.floor(Math.abs(this.remainingTime) / 60) % 60;
     },
 
     /**
      * @return {number}
      */
     seconds() {
-      return Math.floor(this.remainingTime) % 60;
+      return Math.floor(Math.abs(this.remainingTime)) % 60;
     },
 
     /**

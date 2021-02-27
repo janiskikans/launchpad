@@ -18,6 +18,7 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "v-tooltip": "^2.0.3",
     "vue": "^2.6.11",
+    "vue-country-flag": "^2.0.3",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {

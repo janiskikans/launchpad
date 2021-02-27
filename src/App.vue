@@ -1,14 +1,16 @@
 <template>
   <div id="app">
-    <header class="mt-4">
+    <header class="my-12">
       <main-navbar />
     </header>
 
-    <keep-alive include="UpcomingLaunches">
-      <XyzTransition xyz="fade duration-2" mode="out-in">
-        <router-view />
-      </XyzTransition>
-    </keep-alive>
+    <main>
+      <keep-alive include="UpcomingLaunches">
+        <XyzTransition xyz="fade duration-2" mode="out-in">
+          <router-view />
+        </XyzTransition>
+      </keep-alive>
+    </main>
 
     <main-footer />
   </div>
