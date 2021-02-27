@@ -29,7 +29,10 @@
         </div>
       </div>
 
-      <section :key="2" class="text-center text-gray-100 p-12 py-10 mb-8 lg:mb-16 bg-gray-700 rounded-sm shadow-md">
+      <section
+        :key="2"
+        class="text-center text-gray-100 p-6 sm:p-12 py-10 mb-8 lg:mb-16 bg-gray-700 rounded-sm shadow-md"
+      >
         <h1 class="text-2xl font-light mb-4">
           About
           <b>Launchpad</b>
@@ -47,7 +50,7 @@
         </article>
       </section>
 
-      <section :key="3" class="text-center text-gray-100 mb-8 lg:mb-16 p-12 py-6">
+      <section :key="3" class="text-center text-gray-100 mb-8 lg:mb-16 p-5 sm:p-12 py-6">
         <h1 class="text-2xl font-light mb-4">Under the Hood</h1>
         <article class="text-gray-200 text-md leading-relaxed">
           <p class="mb-4 lg:mb-2">
@@ -65,7 +68,10 @@
         </article>
       </section>
 
-      <section :key="4" class="text-center text-gray-100 rounded-sm p-12 py-8 mb-8 lg:mb-16 bg-gray-700 shadow-md">
+      <section
+        :key="4"
+        class="text-center text-gray-100 rounded-sm p-6 sm:p-12 py-8 mb-8 lg:mb-16 bg-gray-700 shadow-md"
+      >
         <div class="flex flex-col lg:flex-row items-center">
           <h1 class="text-2xl font-light lg:hidden">
             About the

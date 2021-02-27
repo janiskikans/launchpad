@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header class="my-12">
+    <header class="my-6 md:my-8 lg:my-12">
       <main-navbar />
     </header>
 
