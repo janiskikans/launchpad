@@ -69,7 +69,7 @@
         </div>
       </card>
 
-      <card title="Location" class="col-span-3">
+      <card title="Launch Location" class="col-span-3">
         <div v-if="launch.pad" class="space-y-2">
           <article>
             <h3 class="font-bold">Location</h3>

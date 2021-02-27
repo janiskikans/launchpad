@@ -34,30 +34,35 @@
           About
           <b>Launchpad</b>
         </h1>
-        <p class="text-md text-gray-200 leading-relaxed">
-          <b>Launchpad</b>
-          is a handy app for rocket launch and space enthusiasts - an easy way to lookup upcoming launches and more at a
-          glance. Currently, Launchpad provides a minimalistic and simple overview of upcoming orbital and suborbital
-          launches while also allowing to view more detailed launch information.
-          <br />
-          <br />
-          Please take into account that Launchpad is currently in its early stages and is just a side-project.
-        </p>
+        <article class="text-md text-gray-200 leading-relaxed">
+          <p class="mb-4 lg:mb-2">
+            <b>Launchpad</b>
+            is a handy app for rocket launch and space enthusiasts - an easy way to lookup upcoming launches and more at
+            a glance. Currently, Launchpad provides a minimalistic and simple overview of upcoming orbital and
+            suborbital launches while also allowing to view more detailed launch information.
+          </p>
+          <p>
+            Please take into account that Launchpad is currently in its early stages and is just a side-project.
+          </p>
+        </article>
       </section>
 
       <section :key="3" class="text-center text-gray-100 mb-8 lg:mb-16 p-12 py-6">
         <h1 class="text-2xl font-light mb-4">Under the Hood</h1>
-        <p class="text-gray-200 text-md leading-relaxed">
-          Launchpad under the hood uses the awesome
-          <better-link href="https://thespacedevs.com/llapi" text="Launch Library 2" is-external />
-          API built by
-          <better-link href="https://thespacedevs.com/" text="The Space Devs" is-external />
-          as the source of data.
-          <br />
-          A more detailed up-to-date list of technologies used can be found on our
-          <better-link href="https://github.com/janiskikans/launchpad" text="GitHub repository" is-external />
-          <span>'s readme.</span>
-        </p>
+        <article class="text-gray-200 text-md leading-relaxed">
+          <p class="mb-4 lg:mb-2">
+            Under the hood Launchpad uses the awesome
+            <better-link href="https://thespacedevs.com/llapi" text="Launch Library 2" is-external />
+            API built by
+            <better-link href="https://thespacedevs.com/" text="The Space Devs" is-external />
+            as the source of data. Without this API Launchpad would not be possible.
+          </p>
+          <p>
+            A more detailed up-to-date list of technologies used can be found on Launchpad's
+            <better-link href="https://github.com/janiskikans/launchpad" text="GitHub repository" is-external />
+            <span>'s readme.</span>
+          </p>
+        </article>
       </section>
 
       <section :key="4" class="text-center text-gray-100 rounded-sm p-12 py-8 mb-8 lg:mb-16 bg-gray-700 shadow-md">
