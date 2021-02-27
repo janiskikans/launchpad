@@ -21,8 +21,8 @@
           <router-link to="/" tag="button" class="nav-button mr-2">
             Upcoming Launches
           </router-link>
-          <router-link to="/under-the-hood" tag="button" class="nav-button">
-            Under the Hood
+          <router-link to="/about" tag="button" class="nav-button">
+            About
           </router-link>
         </div>
       </nav>

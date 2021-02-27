@@ -37,16 +37,15 @@
         <p class="text-md text-gray-200 leading-relaxed">
           <b>Launchpad</b>
           is a handy app for rocket launch and space enthusiasts - an easy way to lookup upcoming launches and more at a
-          glance.
+          glance. Currently, Launchpad provides a minimalistic and simple overview of upcoming orbital and suborbital
+          launches while also allowing to view more detailed launch information.
           <br />
-          Currently, Launchpad provides a minimalistic and simple overview of upcoming orbital and suborbital launches
-          while also allowing to view more detailed launch information.
           <br />
           Please take into account that Launchpad is currently in its early stages and is just a side-project.
         </p>
       </section>
 
-      <section :key="3" class="text-center text-gray-100 mb-8 lg:mb-16 p-12 py-8">
+      <section :key="3" class="text-center text-gray-100 mb-8 lg:mb-16 p-12 py-6">
         <h1 class="text-2xl font-light mb-4">Under the Hood</h1>
         <p class="text-gray-200 text-md leading-relaxed">
           Launchpad under the hood uses the awesome
@@ -63,6 +62,10 @@
 
       <section :key="4" class="text-center text-gray-100 rounded-sm p-12 py-8 mb-8 lg:mb-16 bg-gray-700 shadow-md">
         <div class="flex flex-col lg:flex-row items-center">
+          <h1 class="text-2xl font-light lg:hidden">
+            About the
+            <b>Developer</b>
+          </h1>
           <img
             src="@assets/images/janis_kikans_profile.jpeg"
             alt="author profile image"
@@ -71,8 +74,9 @@
             class="rounded-full m-6 shadow-md hover:"
           />
           <article>
-            <h1 class="text-2xl font-light mb-4">
-              Author
+            <h1 class="text-2xl font-light mb-4 hidden lg:block">
+              About the
+              <b>Developer</b>
             </h1>
             <div class="text-md text-gray-200 leading-relaxed">
               <p>
@@ -103,7 +107,7 @@
 import BetterLink from '@components/utils/BetterLink';
 
 export default {
-  name: 'UnderTheHood',
+  name: 'About',
 
   components: { BetterLink },
 };
