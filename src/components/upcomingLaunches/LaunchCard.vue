@@ -11,7 +11,7 @@
       <div class="p-4 h-full xl:w-full flex flex-col lg:justify-between">
         <div class="my-auto">
           <div class="text-2xl text-gray-50">{{ launch.name }}</div>
-          <div class="text-gray-300">
+          <div class="text-gray-200">
             {{ launch.launchServiceProvider.name }}
           </div>
           <button
@@ -27,7 +27,7 @@
       <div class="flex my-auto xl:mr-12">
         <div class="m-auto flex flex-col lg:flex-row xl:flex-col mb-4 lg:mb-8 xl:my-auto">
           <div>
-            <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-300 text-center mb-2">
+            <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-200 text-center mb-2">
               {{ launchTime }}
             </div>
             <countdown-timer :end-time="launch.net.getTime()" />
