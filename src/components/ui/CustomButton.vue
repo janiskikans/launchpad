@@ -10,12 +10,26 @@
 export default {
   name: 'CustomButton',
 
+  props: {
+    isFullWidthOnMobile: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+
   computed: {
     /**
      * @return {string}
      */
     classes() {
-      return 'custom-button--primary';
+      let classes = 'custom-button--primary';
+
+      if (this.isFullWidthOnMobile) {
+        classes += ' w-full md:w-auto';
+      }
+
+      return classes;
     },
   },
 

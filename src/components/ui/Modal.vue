@@ -23,8 +23,8 @@
           </slot>
         </div>
 
-        <div v-if="hasFooter" class="flex justify-end px-6 pb-4">
-          <custom-button @on-click="closeModal">
+        <div v-if="hasFooter" class="flex justify-end p-6 py-4">
+          <custom-button is-full-width-on-mobile @on-click="closeModal">
             Close
           </custom-button>
         </div>
@@ -88,7 +88,7 @@ export default {
   max-height: calc(100vh - 90px);
   overflow-y: auto;
 
-  @apply bg-gray-100 shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/4 3xl:w-1/2;
+  @apply bg-gray-100 shadow-xl overflow-x-auto flex flex-col pb-4 sm:pb-4 rounded-lg mx-2 sm:mx-4 lg:mx-8 w-full xl:w-3/4 3xl:w-3/4;
 
   &__close-button {
     @apply text-lg px-2 cursor-pointer transition duration-300 ease-in-out text-gray-500 hover:text-gray-900 focus:outline-none;
