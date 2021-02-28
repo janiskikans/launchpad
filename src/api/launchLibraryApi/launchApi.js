@@ -9,5 +9,5 @@ const BASE_URL = 'https://ll.thespacedevs.com/2.0.0/launch';
  * @return {Promise<AxiosResponse<any>>}
  */
 export const getUpcoming = async (queryParams = {}) => {
-  return axios.get(`${BASE_URL}/upcoming`, queryParams);
+  return axios.get(`${BASE_URL}/upcoming/`, queryParams);
 };

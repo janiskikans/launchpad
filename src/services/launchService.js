@@ -1,4 +1,4 @@
-// import * as launchApi from '@api/launchLibraryApi/launchApi';
+import * as launchApi from '@api/launchLibraryApi/launchApi';
 import Launch from '@structures/launch/launch';
 import { addHours, isPast, getUnixTime, fromUnixTime } from 'date-fns';
 
@@ -9,27 +9,46 @@ const CACHE_DURATION_IN_HOURS = 1;
 
 /**
  * Get upcoming launches from API and return array of launches
- * @param {number} count
  * @return {Launch[]}
  */
-export async function getUpcomingLaunches(count = 5) {
+export async function getUpcomingLaunches() {
   // Attempt to retrieve stored raw upcoming launch data
   let rawLaunchData = getStoredUpcomingLaunches();
 
   // If no stored raw launch data can be found fetch new from API
   if (!rawLaunchData || !rawLaunchData.length) {
-    // const queryParams = new URLSearchParams();
-    // queryParams.append('limit', count);
+    const response = await launchApi.getUpcoming();
+    if (!response || !response['data']) {
+      throw new Error('There was a problem retrieving upcoming launches');
+    }
 
-    // const response = await launchApi.getUpcoming(queryParams);
+    const results = response['data']['results'] ?? null;
+    if (!results) {
+      throw new Error('There was a problem retrieving upcoming launches');
+    }
 
-    // if (!response || !response['results']) {
-    //   throw new Error('There was a problem retrieving upcoming launches');
-    // }
+    storeRawUpcomingLaunchData(results);
 
-    rawLaunchData = upcomingLaunchData['results'];
+    return getLaunchData(results);
+  }
 
-    storeRawUpcomingLaunchData(rawLaunchData);
+  return getLaunchData(rawLaunchData);
+}
+
+/**
+ * Get upcoming launches from local JSON test data. Should be used for retrieving data
+ * while on development environment, to minimize external API request count.
+ * @return {Launch[]}
+ */
+export async function getUpcomingLaunchesFromTestData() {
+  // Attempt to retrieve stored raw upcoming launch data
+  let rawLaunchData = getStoredUpcomingLaunches();
+
+  // If no stored raw launch data can be found fetch new from API
+  if (!rawLaunchData || !rawLaunchData.length) {
+    storeRawUpcomingLaunchData(upcomingLaunchData['results']);
+
+    return getLaunchData(upcomingLaunchData['results']);
   }
 
   return getLaunchData(rawLaunchData);
