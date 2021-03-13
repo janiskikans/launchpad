@@ -12,7 +12,7 @@
       </keep-alive>
     </main>
 
-    <div class="text-center my-4 text-white">
+    <div class="text-center my-4 text-gray-800 dark:text-white">
       <button @click="toggleTheme()">Toggle theme</button>
     </div>
 

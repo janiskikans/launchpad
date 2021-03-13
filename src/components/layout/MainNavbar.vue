@@ -1,5 +1,5 @@
 <template>
-  <div class="text-gray-400 body-font">
+  <div class="dark:text-gray-400 text-gray-500 body-font">
     <div class="container mx-auto flex flex-col md:flex-row justify-around items-center">
       <div
         :key="title"
@@ -53,7 +53,7 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   &__title {
-    @apply lg:order-none font-medium items-center text-2xl text-white lg:items-center lg:justify-center mb-4 md:mb-0;
+    @apply lg:order-none font-medium items-center text-2xl text-gray-800 dark:text-white lg:items-center lg:justify-center mb-4 md:mb-0;
   }
 }
 
@@ -71,10 +71,10 @@ export default {
 }
 
 .nav-button {
-  @apply md:text-xl py-1 md:py-2 px-2 md:px-4 hover:text-gray-100 transition duration-200 ease-in-out select-none focus:outline-none;
+  @apply md:text-xl py-1 md:py-2 px-2 md:px-4 dark:hover:text-gray-100 hover:text-gray-600 transition duration-200 ease-in-out select-none focus:outline-none;
 }
 
 .router-link-exact-active {
-  @apply text-gray-200 font-medium;
+  @apply dark:text-gray-200 text-gray-900 font-medium;
 }
 </style>

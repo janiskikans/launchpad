@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="text-gray-400 body-font">
+    <footer class="dark:text-gray-400 text-gray-700 body-font">
       <div class="text-center mb-8">
         <div class="mb-2">
           Made in
@@ -8,7 +8,7 @@
           by Janis Kikans.
         </div>
         <a
-          class="text-gray-400 hover:text-gray-200 mr-3"
+          class="dark:text-gray-400 text-gray-600 dark:hover:text-gray-200 hover:text-gray-500 mr-3"
           href="https://github.com/janiskikans"
           target="_blank"
           rel="noopener"
@@ -16,7 +16,7 @@
           <ion-icon name="logo-github" />
         </a>
         <a
-          class="text-gray-400 hover:text-gray-200"
+          class="dark:text-gray-400 text-gray-600 dark:hover:text-gray-200 hover:text-gray-500"
           href="https://www.linkedin.com/in/janis-andrejs-kikans/"
           target="_blank"
           rel="noopener"
