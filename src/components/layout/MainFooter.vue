@@ -1,7 +1,7 @@
 <template>
   <div>
     <footer class="dark:text-gray-400 text-gray-200 body-font">
-      <div class="text-center mb-8">
+      <div class="text-center">
         <div class="mb-2">
           Made in
           <country-flag country="lv" size="small" rounded />

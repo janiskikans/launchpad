@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <theme-toggler :current-theme="theme" class="absolute top-4 right-4 hidden lg:block" @change-theme="changeTheme" />
+
     <header class="my-6 md:my-8 lg:my-12">
       <main-navbar />
     </header>
@@ -12,17 +14,18 @@
       </keep-alive>
     </main>
 
-    <div class="text-center my-4 text-gray-800 dark:text-white">
-      <button @click="toggleTheme()">Toggle theme</button>
-    </div>
+    <main-footer class="mb-6" />
 
-    <main-footer />
+    <div class="flex justify-center mb-6 lg:hidden">
+      <theme-toggler :current-theme="theme" class="relative" @change-theme="changeTheme" />
+    </div>
   </div>
 </template>
 
 <script>
 import MainNavbar from '@components/layout/MainNavbar';
-import { getTheme, setTheme, DARK_THEME, LIGHT_THEME } from '@services/themeService';
+import ThemeToggler from '@components/ui/ThemeToggler';
+import { getTheme, DARK_THEME } from '@services/themeService';
 
 export default {
   name: 'App',
@@ -30,21 +33,13 @@ export default {
   components: {
     MainFooter: () => import('@components/layout/MainFooter'),
     MainNavbar,
+    ThemeToggler,
   },
 
   data() {
     return {
       theme: DARK_THEME,
     };
-  },
-
-  computed: {
-    /**
-     * @returns {boolean}
-     */
-    isDarkTheme() {
-      return this.theme === DARK_THEME;
-    },
   },
 
   watch: {
@@ -78,16 +73,11 @@ export default {
       this.theme = savedTheme;
     },
 
-    toggleTheme() {
-      if (this.isDarkTheme) {
-        setTheme(LIGHT_THEME);
-        this.theme = LIGHT_THEME;
-
-        return;
-      }
-
-      setTheme(DARK_THEME);
-      this.theme = DARK_THEME;
+    /**
+     * @param {string} newTheme
+     */
+    changeTheme(newTheme) {
+      this.theme = newTheme;
     },
 
     setDarkTheme() {
