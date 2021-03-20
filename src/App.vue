@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <theme-toggler :current-theme="theme" class="absolute top-4 right-4 hidden lg:block" @change-theme="changeTheme" />
+
     <header class="my-6 md:my-8 lg:my-12">
       <main-navbar />
     </header>
@@ -12,12 +14,18 @@
       </keep-alive>
     </main>
 
-    <main-footer />
+    <main-footer class="mb-6" />
+
+    <div class="flex justify-center mb-6 lg:hidden">
+      <theme-toggler :current-theme="theme" class="relative" @change-theme="changeTheme" />
+    </div>
   </div>
 </template>
 
 <script>
 import MainNavbar from '@components/layout/MainNavbar';
+import ThemeToggler from '@components/ui/ThemeToggler';
+import { getTheme, DARK_THEME } from '@services/themeService';
 
 export default {
   name: 'App',
@@ -25,6 +33,60 @@ export default {
   components: {
     MainFooter: () => import('@components/layout/MainFooter'),
     MainNavbar,
+    ThemeToggler,
+  },
+
+  data() {
+    return {
+      theme: DARK_THEME,
+    };
+  },
+
+  watch: {
+    /**
+     * Toggle app theme
+     * @param {string} newTheme
+     */
+    theme(newTheme) {
+      if (newTheme === DARK_THEME) {
+        this.setDarkTheme();
+      } else {
+        this.setLightTheme();
+      }
+    },
+  },
+
+  created() {
+    this.initializeTheme();
+  },
+
+  methods: {
+    initializeTheme() {
+      this.setDarkTheme();
+
+      const savedTheme = getTheme();
+      if (!savedTheme) {
+        this.theme = DARK_THEME;
+        this.setDarkTheme();
+      }
+
+      this.theme = savedTheme;
+    },
+
+    /**
+     * @param {string} newTheme
+     */
+    changeTheme(newTheme) {
+      this.theme = newTheme;
+    },
+
+    setDarkTheme() {
+      document.documentElement.classList.add('dark');
+    },
+
+    setLightTheme() {
+      document.documentElement.classList.remove('dark');
+    },
   },
 };
 </script>
@@ -32,9 +94,11 @@ export default {
 <style lang="scss">
 html,
 body {
-  @apply bg-gray-800;
-
   font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  @apply dark:from-gray-800 dark:to-gray-800 bg-gradient-to-b from-green-400 to-blue-500;
 }
 
 #app {
