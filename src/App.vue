@@ -108,7 +108,7 @@ body {
 }
 
 body {
-  @apply dark:bg-gray-800 bg-gray-100;
+  @apply dark:from-gray-800 dark:to-gray-800 bg-gradient-to-b from-green-400 to-blue-500;
 }
 
 #app {

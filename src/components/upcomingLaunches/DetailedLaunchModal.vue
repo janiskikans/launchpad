@@ -6,7 +6,11 @@
         :style="{ backgroundImage: 'url(' + launch.image + ')' }"
         :title="launch.name"
       >
-        <launch-status-badge :launch-status="launch.status" class="absolute top-10 left-10" />
+        <launch-status-badge
+          :launch-status="launch.status"
+          :respond-to-dark-mode="false"
+          class="absolute top-10 left-10"
+        />
       </div>
 
       <card title="General" class="col-span-3">

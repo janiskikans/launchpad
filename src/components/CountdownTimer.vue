@@ -1,24 +1,24 @@
 <template>
-  <div class="text-white flex flex-row countdown">
+  <div class="dark:text-white text-gray-800 flex flex-row countdown">
     <div v-if="showTMinus" class="text-3xl mr-2">T{{ signAfterT }}</div>
     <div class="text-center">
       <div class="text-3xl w-10">{{ days | atLeastTwoDigits }}</div>
-      <div class="text-sm text-gray-200">DAYS</div>
+      <div class="text-sm dark:text-gray-200 text-gray-700">DAYS</div>
     </div>
     <div class="text-2xl mx-2">:</div>
     <div class="text-center">
       <div class="text-3xl w-10">{{ hours | atLeastTwoDigits }}</div>
-      <div class="text-sm text-gray-200">HOURS</div>
+      <div class="text-sm dark:text-gray-200 text-gray-700">HOURS</div>
     </div>
     <div class="text-2xl mx-2">:</div>
     <div class="text-center">
       <div class="text-3xl w-10">{{ minutes | atLeastTwoDigits }}</div>
-      <div class="text-sm text-gray-200">MIN</div>
+      <div class="text-sm dark:text-gray-200 text-gray-700">MIN</div>
     </div>
     <div class="text-2xl mx-2">:</div>
     <div class="text-center">
       <div class="text-3xl w-10">{{ seconds | atLeastTwoDigits }}</div>
-      <div class="text-sm text-gray-200">SEC</div>
+      <div class="text-sm dark:text-gray-200 text-gray-700">SEC</div>
     </div>
   </div>
 </template>

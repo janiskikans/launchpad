@@ -17,6 +17,11 @@ export default {
       type: LaunchStatus,
       required: true,
     },
+    respondToDarkMode: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
   },
 
   computed: {
@@ -24,16 +29,30 @@ export default {
      * @return {string}
      */
     statusClass() {
+      let baseClasses = this.respondToDarkMode ? 'dark:border-0 dark:text-white border' : '';
+
       if (this.launchStatus.isGood()) {
-        return 'bg-green-500';
+        if (!this.respondToDarkMode) {
+          return 'bg-green-500';
+        }
+
+        return (baseClasses += ' dark:bg-green-500 border-green-500 text-green-500');
       }
 
       if (this.launchStatus.isNeutral()) {
-        return 'bg-gray-600';
+        if (!this.respondToDarkMode) {
+          return 'bg-gray-600';
+        }
+
+        return (baseClasses += ' dark:bg-gray-600 border-gray-600 text-gray-600');
       }
 
       if (this.launchStatus.isBad()) {
-        return 'bg-red-500';
+        if (!this.respondToDarkMode) {
+          return 'bg-red-500';
+        }
+
+        return (baseClasses += ' dark:bg-red-500 border-red-500 text-red-500');
       }
 
       return '';

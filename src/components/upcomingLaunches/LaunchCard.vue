@@ -1,6 +1,6 @@
 <template>
   <div
-    class="launch-card bg-gray-700 shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden"
+    class="launch-card dark:bg-gray-700 bg-white shadow-lg rounded-lg flex flex-col lg:flex-row overflow-hidden"
     :class="bodyClass"
   >
     <div class="launch-card__image-wrapper">
@@ -10,13 +10,13 @@
     <div class="flex flex-col xl:flex-row w-full">
       <div class="p-4 h-full xl:w-full flex flex-col lg:justify-between">
         <div class="my-auto">
-          <div class="text-2xl text-gray-50">{{ launch.name }}</div>
-          <div class="text-gray-200">
+          <div class="text-2xl dark:text-gray-50 text-black">{{ launch.name }}</div>
+          <div class="dark:text-gray-200 text-gray-800">
             {{ launch.launchServiceProvider.name }}
           </div>
           <button
             type="button"
-            class="border border-gray-500 text-white rounded-md px-4 py-2 mt-4 lg:mt-6 xl:mt-4 w-full lg:w-full xl:w-auto transition duration-500 ease select-none hover:bg-gray-600 focus:outline-none focus:shadow-outline"
+            class="border dark:border-gray-500 border-gray-400 dark:text-white text-black rounded-md px-4 py-2 mt-4 lg:mt-6 xl:mt-4 w-full lg:w-full xl:w-auto transition duration-500 ease select-none dark:hover:bg-gray-600 hover:bg-gray-200 focus:outline-none focus:shadow-outline"
             @click="openDetailedLaunchModal()"
           >
             Launch Details
@@ -27,7 +27,7 @@
       <div class="flex my-auto xl:mr-12">
         <div class="m-auto flex flex-col lg:flex-row xl:flex-col mb-4 lg:mb-8 xl:my-auto">
           <div>
-            <div v-tooltip="launchTimeTooltip" class="text-lg text-gray-200 text-center mb-2">
+            <div v-tooltip="launchTimeTooltip" class="text-lg dark:text-gray-200 text-gray-700 text-center mb-2">
               {{ launchTime }}
             </div>
             <countdown-timer :end-time="launch.net.getTime()" />

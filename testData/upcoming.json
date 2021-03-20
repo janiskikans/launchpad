@@ -770,8 +770,8 @@
       "slug": "soyuz-21afregat-m-cas500-1-rideshare",
       "name": "Soyuz 2.1a/Fregat-M | CAS500-1 & rideshare",
       "status": {
-        "id": 2,
-        "name": "TBD"
+        "id": 4,
+        "name": "Failure"
       },
       "net": "2021-03-20T00:00:00Z",
       "window_end": "2021-03-20T00:00:00Z",

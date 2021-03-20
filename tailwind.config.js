@@ -15,6 +15,9 @@ module.exports = {
         '3xl': '1700px',
       },
     },
+    backgroundColor: theme => ({
+      ...theme('colors'),
+    }),
   },
   darkMode: 'class',
 };
