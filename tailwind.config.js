@@ -12,7 +12,7 @@ module.exports = {
     },
     extend: {
       screens: {
-        '3xl': '1700px',
+        '3xl': '1800px',
       },
     },
     backgroundColor: theme => ({
