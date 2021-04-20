@@ -6,13 +6,7 @@
         class="hover:opacity-90 duration-300 cursor-pointer whitespace-nowrap flex order-first navbar__title"
         @click="onTitleClick"
       >
-        <img
-          src="@assets/images/icons/rocket-outline-white.svg"
-          width="26"
-          height="26"
-          alt="rocket icon"
-          class="mr-1.5"
-        />
+        <img src="@assets/images/icons/launchpad_new.svg" width="26" height="26" alt="launchpad icon" class="mr-1.5" />
         Launchpad
       </div>
 
