@@ -61,7 +61,7 @@
             as the source of data. Without this API Launchpad would not be possible.
           </p>
           <p class="mb-4 lg:mb-2">
-            Launchpad icon based on an icon by
+            Launchpad icon is based on an icon by
             <better-link href="https://freeicons.io/profile/2257" text="www.wishforge.games" is-external />
             on
             <better-link href="https://freeicons.io" text="freeicons.io" is-external />
