@@ -25,5 +25,8 @@ module.exports = {
         files: ['src/**/*.{vue,scss}'],
       }),
     ],
+    devServer: {
+      host: 'launchpadapp.test',
+    },
   },
 };
