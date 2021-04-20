@@ -60,6 +60,13 @@
             <better-link href="https://thespacedevs.com/" text="The Space Devs" is-external />
             as the source of data. Without this API Launchpad would not be possible.
           </p>
+          <p class="mb-4 lg:mb-2">
+            Launchpad icon is based on an icon by
+            <better-link href="https://freeicons.io/profile/2257" text="www.wishforge.games" is-external />
+            on
+            <better-link href="https://freeicons.io" text="freeicons.io" is-external />
+            <span>.</span>
+          </p>
           <p>
             A more detailed up-to-date list of technologies used can be found on Launchpad's
             <better-link href="https://github.com/janiskikans/launchpad" text="GitHub repository" is-external />
