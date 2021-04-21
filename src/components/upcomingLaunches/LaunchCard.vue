@@ -4,7 +4,12 @@
     :class="bodyClass"
   >
     <div class="launch-card__image-wrapper">
-      <img :src="launch.image" :alt="launch.name" class="launch-card__image w-full lg:w-80 lg:max-h-auto" />
+      <img
+        :src="launch.image"
+        :alt="launch.name"
+        class="launch-card__image w-full lg:w-80 lg:max-h-auto"
+        @error="loadPlaceholderImage"
+      />
     </div>
 
     <div class="flex flex-col xl:flex-row w-full">
@@ -59,6 +64,7 @@ import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
 import { disableBodyScroll } from '@helpers/uiHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
+import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
 
 export default {
   name: 'LaunchCard',
@@ -81,6 +87,7 @@ export default {
     return {
       showLaunchModal: false,
       showDetailCollapse: false,
+      placeholderImage: placeholderImageUrl,
     };
   },
 
@@ -152,6 +159,10 @@ export default {
     openDetailedLaunchModal() {
       this.showLaunchModal = true;
       disableBodyScroll();
+    },
+
+    loadPlaceholderImage(e) {
+      e.target.src = this.placeholderImage;
     },
   },
 };

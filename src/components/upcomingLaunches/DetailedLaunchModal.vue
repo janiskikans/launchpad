@@ -1,15 +1,20 @@
 <template>
   <div class="detailed-launch-modal">
     <div class="grid grid-cols-1 md:grid-cols-6 xl:grid-cols-9 gap-4">
-      <div
-        class="detailed-launch-modal__launch-image rounded-lg col-span-3 row-span-2 h-96 md:h-auto"
-        :style="{ backgroundImage: 'url(' + launch.image + ')' }"
-        :title="launch.name"
-      >
+      <div class="col-span-3 row-span-2 h-96 md:h-auto relative">
+        <div
+          class="detailed-launch-modal__launch-image rounded-lg"
+          :style="{ backgroundImage: 'url(' + launch.image + ')' }"
+          :title="launch.name"
+        ></div>
+        <div
+          :style="{ backgroundImage: 'url(' + placeholderImage + ')' }"
+          class="detailed-launch-modal__launch-placeholder-image rounded-lg"
+        ></div>
         <launch-status-badge
           :launch-status="launch.status"
           :respond-to-dark-mode="false"
-          class="absolute top-10 left-10"
+          class="absolute top-10 left-10 z-20"
         />
       </div>
 
@@ -98,6 +103,7 @@ import Card from '@components/ui/Card';
 import { format } from 'date-fns';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
+import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -112,6 +118,12 @@ export default {
       type: Launch,
       required: true,
     },
+  },
+
+  data() {
+    return {
+      placeholderImage: placeholderImageUrl,
+    };
   },
 
   computed: {
@@ -135,7 +147,11 @@ export default {
 <style lang="scss">
 .detailed-launch-modal {
   &__launch-image {
-    @apply bg-cover bg-no-repeat bg-center;
+    @apply bg-cover bg-no-repeat bg-center w-full h-full absolute z-10;
+  }
+
+  &__launch-placeholder-image {
+    @apply bg-cover bg-no-repeat bg-center w-full h-full;
   }
 }
 </style>
