@@ -1,7 +1,7 @@
 <template>
   <div class="text-white uppercase text-center text-2xl">
-    <span class="rounded-lg px-1.5 py-1 opacity-90" :class="statusClass">
-      {{ launchStatus }}
+    <span v-tooltip="launchStatusTooltip" class="rounded-lg px-1.5 py-1 opacity-90" :class="statusClass">
+      {{ statusMessage }}
     </span>
   </div>
 </template>
@@ -25,6 +25,13 @@ export default {
   },
 
   computed: {
+    /**
+     * @return {string}
+     */
+    statusMessage() {
+      return statusHelper.getShortMessage(this.launchStatus);
+    },
+
     /**
      * @return {string}
      */
@@ -56,6 +63,25 @@ export default {
       }
 
       return '';
+    },
+
+    /**
+     * @return {string}
+     */
+    launchStatusTooltip() {
+      const fullMessage = statusHelper.getFullMessage(this.launchStatus);
+
+      let content = '';
+      if (this.statusMessage !== fullMessage) {
+        content = fullMessage;
+      }
+
+      return {
+        content,
+        classes: 'font-medium',
+        placement: 'bottom-center',
+        offset: 5,
+      };
     },
   },
 };
