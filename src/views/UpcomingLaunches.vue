@@ -54,6 +54,9 @@ export default {
   },
 
   methods: {
+    /**
+     * @deprecated Use loadNewUpcomingLaunches() instead
+     */
     loadUpcomingLaunches() {
       // If on production, then retrieve actual data from the API
       if (process.env.NODE_ENV === 'production') {
@@ -67,7 +70,7 @@ export default {
     },
 
     loadNewUpcomingLaunches() {
-      getUpcomingLaunchesNew().then(launches => console.log(launches));
+      getUpcomingLaunchesNew().then(launches => this.setUpcomingLaunches(launches));
     },
 
     /**

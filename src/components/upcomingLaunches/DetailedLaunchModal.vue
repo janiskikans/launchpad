@@ -25,10 +25,6 @@
             <p>{{ launch.name }}</p>
           </article>
           <article>
-            <h3 class="font-bold">In Hold</h3>
-            <p>{{ launch.inHold ? 'Yes' : 'No' }}</p>
-          </article>
-          <article>
             <h3 class="font-bold">Window Start</h3>
             <p>{{ launchWindowStart }}</p>
           </article>
@@ -49,6 +45,10 @@
             <h3 class="font-bold">Type</h3>
             <p>{{ launch.launchServiceProvider.type ? launch.launchServiceProvider.type : 'Not specified' }}</p>
           </article>
+          <article>
+            <h3 class="font-bold">Country</h3>
+            <p>{{ launch.launchServiceProvider.country ? launch.launchServiceProvider.country : 'Not specified' }}</p>
+          </article>
         </div>
       </card>
 
@@ -62,12 +62,12 @@
             <h3 class="font-bold">Type</h3>
             <p>{{ launch.mission.type }}</p>
           </article>
-          <article>
+          <!-- <article>
             <h3 class="font-bold">Orbit</h3>
             <p>
               {{ launch.mission.orbit && launch.mission.orbit.name ? launch.mission.orbit.name : 'Not specified' }}
             </p>
-          </article>
+          </article> -->
           <article>
             <h3 class="font-bold">Description</h3>
             <p>{{ launch.mission.description ? launch.mission.description : 'Not specified' }}</p>
@@ -98,12 +98,12 @@
 </template>
 
 <script>
-import Launch from '@structures/launch/launch';
 import Card from '@components/ui/Card';
 import { format } from 'date-fns';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
+import LaunchNew from '@/structures/launch/launchNew';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -115,7 +115,7 @@ export default {
 
   props: {
     launch: {
-      type: Launch,
+      type: LaunchNew,
       required: true,
     },
   },
