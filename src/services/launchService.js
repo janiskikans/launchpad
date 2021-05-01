@@ -1,14 +1,17 @@
 import * as launchApi from '@api/launchLibraryApi/launchApi';
+import * as launchpadLaunchApi from '@api/launchpadApi/launchApi';
 import Launch from '@structures/launch/launch';
 import { addHours, isPast, getUnixTime, fromUnixTime } from 'date-fns';
 
 import upcomingLaunchData from '../../testData/upcoming.json';
+import LaunchNew from '../structures/launch/launchNew';
 
 const UPCOMING_LAUNCH_STORE_KEY = 'upcomingLaunchData';
 const CACHE_DURATION_IN_HOURS = 1;
 
 /**
  * Get upcoming launches from API and return array of launches
+ * @deprecated Use getUpcomingLaunchesNew()
  * @return {Launch[]}
  */
 export async function getUpcomingLaunches() {
@@ -33,6 +36,24 @@ export async function getUpcomingLaunches() {
   }
 
   return getLaunchData(rawLaunchData);
+}
+
+/**
+ * Get upcoming launches from the Launchpad API and raturn array of launches
+ * @returns {LaunchNew[]}
+ */
+export async function getUpcomingLaunchesNew() {
+  const response = await launchpadLaunchApi.getUpcoming();
+  if (!response || !response['data']) {
+    throw new Error('There was a problem retrieving upcoming launches');
+  }
+
+  const results = response['data']['data'] ?? null;
+  if (!results) {
+    throw new Error('There was a problem retrieving upcoming launches');
+  }
+
+  return getLaunchDataNew(results);
 }
 
 /**
@@ -100,12 +121,28 @@ function storeRawUpcomingLaunchData(rawLaunchData) {
  * Parse array of launches from raw launch data
  * @param {[]} rawLaunchData
  * @return {Launch[]}
+ * @deprecated Use getLaunchDataNew() instead
  */
 function getLaunchData(rawLaunchData) {
   const launches = [];
 
   rawLaunchData.forEach(rawLaunchData => {
     launches.push(new Launch(rawLaunchData));
+  });
+
+  return launches;
+}
+
+/**
+ * Parse array of LaunchNew objects from raw launch data
+ * @param {[]} rawLaunchData
+ * @returns {LaunchNew[]}
+ */
+function getLaunchDataNew(rawLaunchData) {
+  const launches = [];
+
+  rawLaunchData.forEach(rawLaunchData => {
+    launches.push(new LaunchNew(rawLaunchData));
   });
 
   return launches;

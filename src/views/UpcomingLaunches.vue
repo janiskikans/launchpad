@@ -24,7 +24,7 @@
 
 <script>
 import LaunchCard from '@components/upcomingLaunches/LaunchCard';
-import { getUpcomingLaunches, getUpcomingLaunchesFromTestData } from '@services/launchService';
+import { getUpcomingLaunches, getUpcomingLaunchesFromTestData, getUpcomingLaunchesNew } from '@services/launchService';
 import BetterLink from '@/components/utils/BetterLink.vue';
 
 export default {
@@ -49,7 +49,8 @@ export default {
   },
 
   mounted() {
-    this.loadUpcomingLaunches();
+    // this.loadUpcomingLaunches();
+    this.loadNewUpcomingLaunches();
   },
 
   methods: {
@@ -63,6 +64,10 @@ export default {
 
       // Retrieve launch data from local data
       getUpcomingLaunchesFromTestData().then(launches => this.setUpcomingLaunches(launches));
+    },
+
+    loadNewUpcomingLaunches() {
+      getUpcomingLaunchesNew().then(launches => console.log(launches));
     },
 
     /**
