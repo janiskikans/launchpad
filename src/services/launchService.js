@@ -2,9 +2,9 @@ import * as launchApi from '@api/launchLibraryApi/launchApi';
 import * as launchpadLaunchApi from '@api/launchpadApi/launchApi';
 import Launch from '@structures/launch/launch';
 import { addHours, isPast, getUnixTime, fromUnixTime } from 'date-fns';
+import LaunchNew from '@/structures/launch/launchNew';
 
 import upcomingLaunchData from '../../testData/upcoming.json';
-import LaunchNew from '../structures/launch/launchNew';
 
 const UPCOMING_LAUNCH_STORE_KEY = 'upcomingLaunchData';
 const CACHE_DURATION_IN_HOURS = 1;
@@ -60,6 +60,7 @@ export async function getUpcomingLaunchesNew() {
  * Get upcoming launches from local JSON test data. Should be used for retrieving data
  * while on development environment, to minimize external API request count.
  * @return {Launch[]}
+ * @deprecated Use getUpcomingLaunchesNew()
  */
 export async function getUpcomingLaunchesFromTestData() {
   // Attempt to retrieve stored raw upcoming launch data
@@ -78,6 +79,7 @@ export async function getUpcomingLaunchesFromTestData() {
 /**
  * Attempt to retrieve stored raw upcoming launch data. If it's expired then return an empty array
  * @return {array}
+ * @deprecated Use getUpcomingLaunchesNew()
  */
 function getStoredUpcomingLaunches() {
   try {
@@ -103,6 +105,7 @@ function getStoredUpcomingLaunches() {
 /**
  * Store raw upcoming launch data in local storage with an expiration time
  * @param {array} rawLaunchData
+ * @deprecated Use getUpcomingLaunchesNew()
  */
 function storeRawUpcomingLaunchData(rawLaunchData) {
   const upcomingLaunchData = {
