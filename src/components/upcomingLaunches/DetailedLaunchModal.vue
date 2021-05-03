@@ -62,12 +62,12 @@
             <h3 class="font-bold">Type</h3>
             <p>{{ launch.mission.type }}</p>
           </article>
-          <!-- <article>
+          <article>
             <h3 class="font-bold">Orbit</h3>
             <p>
-              {{ launch.mission.orbit && launch.mission.orbit.name ? launch.mission.orbit.name : 'Not specified' }}
+              {{ launch.mission.orbit ? launch.mission.orbit : 'Not specified' }}
             </p>
-          </article> -->
+          </article>
           <article>
             <h3 class="font-bold">Description</h3>
             <p>{{ launch.mission.description ? launch.mission.description : 'Not specified' }}</p>

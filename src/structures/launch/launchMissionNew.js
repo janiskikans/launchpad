@@ -9,6 +9,9 @@ export default class LaunchMissionNew {
   type = '';
 
   /** @type {string} */
+  orbit = '';
+
+  /** @type {string} */
   description = '';
 
   /** @type {number} */
@@ -18,6 +21,7 @@ export default class LaunchMissionNew {
     this.id = params.id;
     this.name = params.name;
     this.type = params.type ?? '';
+    this.orbit = params.orbit ?? '';
     this.description = params.description ?? '';
     this.dataSourceId = params.data_source_id;
   }
