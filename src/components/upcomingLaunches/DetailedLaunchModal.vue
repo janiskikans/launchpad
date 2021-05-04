@@ -103,7 +103,7 @@ import { format } from 'date-fns';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
-import LaunchNew from '@/structures/launch/launchNew';
+import Launch from '@/structures/launch/launch';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -115,7 +115,7 @@ export default {
 
   props: {
     launch: {
-      type: LaunchNew,
+      type: Launch,
       required: true,
     },
   },

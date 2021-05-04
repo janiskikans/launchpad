@@ -1,30 +1,28 @@
-import Orbit from '@structures/orbit';
-
 export default class LaunchMission {
-  /** @type {number|null} */
-  launchLibraryId = null;
+  /** @type {number} */
+  id;
 
   /** @type {string} */
   name = '';
 
   /** @type {string} */
-  description = '';
-
-  /** @type {string} */
-  launchDesignator = '';
-
-  /** @type {string} */
   type = '';
 
-  /** @type {Orbit|null} */
-  orbit = null;
+  /** @type {string} */
+  orbit = '';
+
+  /** @type {string} */
+  description = '';
+
+  /** @type {number} */
+  dataSourceId;
 
   constructor(params = {}) {
-    this.launchLibraryId = params.launch_library_id ?? null;
-    this.name = params.name ?? '';
-    this.description = params.description ?? '';
-    this.launchDesignator = params.launch_designator ?? '';
+    this.id = params.id;
+    this.name = params.name;
     this.type = params.type ?? '';
-    this.orbit = params.orbit ? new Orbit(params.orbit) : null;
+    this.orbit = params.orbit ?? '';
+    this.description = params.description ?? '';
+    this.dataSourceId = params.data_source_id;
   }
 }

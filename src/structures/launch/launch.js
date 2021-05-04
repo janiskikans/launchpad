@@ -1,21 +1,21 @@
-import LaunchStatus from '@structures/launch/launchStatus';
-import LaunchServiceProvider from '@structures/launch/launchServiceProvider';
-import LaunchMission from '@structures/launch/launchMission';
 import { differenceInHours, isEqual } from 'date-fns';
+import DataSource from '@structures/dataSource';
+import LaunchMission from '@structures/launch/launchMission';
 import LaunchPad from '@structures/launch/launchPad';
+import LaunchServiceProvider from '@structures/launch/launchServiceProvider';
 
 export default class Launch {
-  /** @type {number|null} */
-  launchLibraryId = null;
+  /** @type {number} */
+  id;
 
   /** @type {string} */
-  name = '';
+  name;
 
-  /** @type {LaunchStatus|null} */
-  status = null;
+  /** @type {string} */
+  slug;
 
-  /** @type {Date|null} */
-  net = null;
+  /** @type {Date} */
+  net;
 
   /** @type {Date|null} */
   windowEnd = null;
@@ -23,11 +23,14 @@ export default class Launch {
   /** @type {Date|null} */
   windowStart = null;
 
-  /** @type {boolean} */
-  inHold = false;
+  /** @type {string} */
+  status;
 
   /** @type {string} */
   image = '';
+
+  /** @type {DataSource} */
+  dataSource;
 
   /** @type {LaunchServiceProvider|null} */
   launchServiceProvider = null;
@@ -39,17 +42,18 @@ export default class Launch {
   pad = null;
 
   constructor(params = {}) {
-    this.launchLibraryId = params.launch_library_id ?? null;
-    this.name = params.name ?? '';
-    this.status = new LaunchStatus(params.status);
-    this.net = params.net ? new Date(params.net) : null;
+    this.id = params.id;
+    this.name = params.name;
+    this.slug = params.slug;
+    this.net = new Date(params.net);
     this.windowStart = params.window_start ? new Date(params.window_start) : null;
     this.windowEnd = params.window_end ? new Date(params.window_end) : null;
-    this.inHold = params.inHold ?? false;
-    this.image = params.image ?? '';
-    this.launchServiceProvider = new LaunchServiceProvider(params.launch_service_provider);
+    this.status = params.status;
+    this.image = params.image_url ?? '';
+    this.dataSource = new DataSource(params.data_source);
+    this.launchServiceProvider = new LaunchServiceProvider(params.launch_provider);
     this.mission = params.mission ? new LaunchMission(params.mission) : null;
-    this.pad = params.pad ? new LaunchPad(params.pad) : null;
+    this.pad = params.launch_pad ? new LaunchPad(params.launch_pad) : null;
   }
 
   /**

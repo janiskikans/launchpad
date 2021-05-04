@@ -64,7 +64,7 @@ import { format } from 'date-fns';
 import { disableBodyScroll } from '@helpers/uiHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
-import LaunchNew from '@/structures/launch/launchNew';
+import Launch from '@/structures/launch/launch';
 import * as statusHelper from '@helpers/launchStatusHelper';
 
 export default {
@@ -79,7 +79,7 @@ export default {
 
   props: {
     launch: {
-      type: LaunchNew,
+      type: Launch,
       required: true,
     },
   },

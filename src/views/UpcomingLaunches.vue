@@ -24,7 +24,7 @@
 
 <script>
 import LaunchCard from '@components/upcomingLaunches/LaunchCard';
-import { getUpcomingLaunchesNew } from '@services/launchService';
+import { getUpcomingLaunches } from '@services/launchService';
 import BetterLink from '@components/utils/BetterLink';
 
 export default {
@@ -54,7 +54,7 @@ export default {
 
   methods: {
     loadUpcomingLaunches() {
-      getUpcomingLaunchesNew().then(launches => this.setUpcomingLaunches(launches));
+      getUpcomingLaunches().then(launches => this.setUpcomingLaunches(launches));
     },
 
     /**
