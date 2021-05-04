@@ -14,15 +14,12 @@ export const initializeCsrf = async () => {
  */
 export const login = async (email, password) => {
   return axios.post(
-    `${BASE_URL}/api/login`,
+    `${BASE_URL}/login`,
     {
       email,
       password,
     },
-    {
-      withCredentials: true,
-      headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
-    },
+    getRequestOptions,
   );
 };
 
@@ -31,8 +28,15 @@ export const login = async (email, password) => {
  * @returns {Promise<AxiosResponse<any>>}
  */
 export const getUser = async () => {
-  return axios.get(`${BASE_URL}/api/user`, {
+  return axios.get(`${BASE_URL}/api/me`, getRequestOptions());
+};
+
+/**
+ * @returns {{}}
+ */
+function getRequestOptions() {
+  return {
     withCredentials: true,
     headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
-  });
-};
+  };
+}
