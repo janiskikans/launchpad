@@ -16,7 +16,7 @@
       <div class="p-4 h-full xl:w-full flex flex-col lg:justify-between">
         <div class="my-auto">
           <div class="text-2xl dark:text-gray-50 text-black">{{ launch.name }}</div>
-          <div class="dark:text-gray-200 text-gray-800">
+          <div v-if="launch.launchServiceProvider" class="dark:text-gray-200 text-gray-800">
             {{ launch.launchServiceProvider.name }}
           </div>
           <button

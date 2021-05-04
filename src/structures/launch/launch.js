@@ -47,7 +47,9 @@ export default class Launch {
     this.windowEnd = params.window_end ? new Date(params.window_end) : null;
     this.inHold = params.inHold ?? false;
     this.image = params.image ?? '';
-    this.launchServiceProvider = new LaunchServiceProvider(params.launch_service_provider);
+    this.launchServiceProvider = params.launch_service_provider
+      ? new LaunchServiceProvider(params.launch_service_provider)
+      : null;
     this.mission = params.mission ? new LaunchMission(params.mission) : null;
     this.pad = params.pad ? new LaunchPad(params.pad) : null;
   }

@@ -40,15 +40,20 @@
       </card>
 
       <card title="Provider" class="col-span-3">
-        <div class="space-y-2 mt-0">
-          <article>
-            <h3 class="font-bold">Name</h3>
-            <p>{{ launch.launchServiceProvider.name }}</p>
-          </article>
-          <article>
-            <h3 class="font-bold">Type</h3>
-            <p>{{ launch.launchServiceProvider.type ? launch.launchServiceProvider.type : 'Not specified' }}</p>
-          </article>
+        <div v-if="launch.launchServiceProvider">
+          <div class="space-y-2 mt-0">
+            <article>
+              <h3 class="font-bold">Name</h3>
+              <p>{{ launch.launchServiceProvider.name }}</p>
+            </article>
+            <article>
+              <h3 class="font-bold">Type</h3>
+              <p>{{ launch.launchServiceProvider.type ? launch.launchServiceProvider.type : 'Not specified' }}</p>
+            </article>
+          </div>
+        </div>
+        <div v-else>
+          No provider information provided
         </div>
       </card>
 
