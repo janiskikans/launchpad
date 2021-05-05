@@ -67,11 +67,6 @@
             <better-link href="https://freeicons.io" text="freeicons.io" is-external />
             <span>.</span>
           </p>
-          <p>
-            A more detailed up-to-date list of technologies used can be found on Launchpad's
-            <better-link href="https://github.com/janiskikans/launchpad" text="GitHub repository" is-external />
-            <span>'s readme.</span>
-          </p>
         </article>
       </section>
 
