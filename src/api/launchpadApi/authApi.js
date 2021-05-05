@@ -19,7 +19,10 @@ export const login = async (email, password) => {
       email,
       password,
     },
-    getRequestOptions,
+    {
+      withCredentials: true,
+      headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
+    },
   );
 };
 
@@ -28,15 +31,8 @@ export const login = async (email, password) => {
  * @returns {Promise<AxiosResponse<any>>}
  */
 export const getUser = async () => {
-  return axios.get(`${BASE_URL}/api/me`, getRequestOptions());
-};
-
-/**
- * @returns {{}}
- */
-function getRequestOptions() {
-  return {
+  return axios.get(`${BASE_URL}/api/me`, {
     withCredentials: true,
     headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
-  };
-}
+  });
+};

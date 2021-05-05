@@ -48,8 +48,15 @@ router.beforeEach((to, from, next) => {
   const isAuthorized = store.state.auth.isAuthorized;
 
   // Restrict acces to Dashboard if user is not authorized
-  if (to.name === 'Dashboard' && !isAuthorized) {
-    next({ name: 'Upcoming Launches' });
+  if (to.name === ROUTE_DASHBOARD && !isAuthorized) {
+    next({ name: ROUTE_UPCOMING });
+
+    return;
+  }
+
+  /** If we're is authorized and trying to access login the redirect straight to Dashboard */
+  if (to.name === ROUTE_LOGIN && isAuthorized) {
+    next({ name: ROUTE_DASHBOARD });
 
     return;
   }

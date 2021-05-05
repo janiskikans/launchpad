@@ -19,6 +19,7 @@ module.exports = {
         '@services': path.resolve(__dirname, 'src/services'),
         '@helpers': path.resolve(__dirname, 'src/helpers'),
         '@store': path.resolve(__dirname, 'src/store'),
+        '@loaders': path.resolve(__dirname, 'src/loaders'),
       },
     },
     plugins: [
