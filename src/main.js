@@ -4,6 +4,7 @@ import VTooltip from 'v-tooltip';
 import VueAnimXYZ from '@animxyz/vue';
 
 import router from './router';
+import store from './store';
 
 import '@assets/scss/main.scss';
 import '@animxyz/core';
@@ -16,5 +17,6 @@ Vue.config.ignoredElements = [/^ion-/];
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app');

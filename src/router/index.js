@@ -2,27 +2,59 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import UpcomingLaunches from '@views/UpcomingLaunches';
 import { buildPageTitle } from '@helpers/routerHelper';
+import store from '@store';
+
+const ROUTE_UPCOMING = 'Upcoming Launches';
+const ROUTE_ABOUT = 'About';
+const ROUTE_DASHBOARD = 'Dashboard';
+const ROUTE_LOGIN = 'Login';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Upcoming Launches',
+    name: ROUTE_UPCOMING,
     component: UpcomingLaunches,
-    meta: { title: 'Upcoming Launches' },
+    meta: { title: ROUTE_UPCOMING },
   },
   {
     path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '@views/About.vue'),
-    meta: { title: 'About' },
+    name: ROUTE_ABOUT,
+    component: () => import(/* webpackChunkName: "about" */ '@views/About'),
+    meta: { title: ROUTE_ABOUT },
+  },
+  {
+    path: '/dashboard',
+    name: ROUTE_DASHBOARD,
+    component: () => import(/* webpackChunkNameL "dashboard" */ '@views/Dashboard'),
+    meta: { title: ROUTE_DASHBOARD },
+  },
+  {
+    path: '/login',
+    name: ROUTE_LOGIN,
+    component: () => import(/* webpackChunkNameL "login" */ '@views/Login'),
+    meta: { title: ROUTE_LOGIN },
   },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  /** @type {boolean} */
+  const isAuthorized = store.state.auth.isAuthorized;
+
+  // Restrict acces to Dashboard if user is not authorized
+  if (to.name === 'Dashboard' && !isAuthorized) {
+    next({ name: 'Upcoming Launches' });
+
+    return;
+  }
+
+  next();
 });
 
 router.afterEach(to => {

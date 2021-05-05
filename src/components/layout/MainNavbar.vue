@@ -15,6 +15,9 @@
           <router-link to="/" tag="button" class="nav-button mr-2">
             Upcoming Launches
           </router-link>
+          <router-link v-if="isAuthorized" to="/dashboard" tag="button" class="nav-button mr-2">
+            Dashboard
+          </router-link>
           <router-link to="/about" tag="button" class="nav-button">
             About
           </router-link>
@@ -25,6 +28,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'MainNavbar',
 
@@ -32,6 +37,13 @@ export default {
     return {
       title: 'Launchpad',
     };
+  },
+
+  computed: {
+    ...mapState({
+      /** @type {boolean} */
+      isAuthorized: state => state.auth.isAuthorized,
+    }),
   },
 
   methods: {
