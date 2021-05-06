@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <snackbar class="z-10" />
+    <user-bar v-if="showUserBar">Test</user-bar>
     <theme-toggler :current-theme="theme" class="absolute top-4 right-4 hidden lg:block" @change-theme="changeTheme" />
 
     <header class="my-6 md:my-8 lg:my-12">
@@ -26,6 +28,7 @@
 import MainNavbar from '@components/layout/MainNavbar';
 import ThemeToggler from '@components/ui/ThemeToggler';
 import { getTheme, DARK_THEME } from '@services/themeService';
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
@@ -34,12 +37,30 @@ export default {
     MainFooter: () => import('@components/layout/MainFooter'),
     MainNavbar,
     ThemeToggler,
+    UserBar: () => import('@components/ui/UserBar'),
+    Snackbar: () => import('@/components/ui/Snackbar'),
   },
 
   data() {
     return {
       theme: DARK_THEME,
     };
+  },
+
+  computed: {
+    ...mapState({
+      /** @type {boolean} */
+      isAuthorized: state => state.auth.isAuthorized,
+      /** @type {User|null} */
+      currentUser: state => state.auth.currentUser,
+    }),
+
+    /**
+     * @return {boolean}
+     */
+    showUserBar() {
+      return this.isAuthorized && this.currentUser;
+    },
   },
 
   watch: {

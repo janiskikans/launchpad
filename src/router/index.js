@@ -4,10 +4,10 @@ import UpcomingLaunches from '@views/UpcomingLaunches';
 import { buildPageTitle } from '@helpers/routerHelper';
 import store from '@store';
 
-const ROUTE_UPCOMING = 'Upcoming Launches';
-const ROUTE_ABOUT = 'About';
-const ROUTE_DASHBOARD = 'Dashboard';
-const ROUTE_LOGIN = 'Login';
+export const ROUTE_UPCOMING = 'Upcoming Launches';
+export const ROUTE_ABOUT = 'About';
+export const ROUTE_DASHBOARD = 'Dashboard';
+export const ROUTE_LOGIN = 'Login';
 
 Vue.use(VueRouter);
 

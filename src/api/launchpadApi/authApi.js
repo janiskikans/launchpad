@@ -2,6 +2,9 @@ import axios from 'axios';
 
 const BASE_URL = process.env.VUE_APP_BE_BASE_URL;
 
+/**
+ * @return {Promise<AxiosResponse<any>>}
+ */
 export const initializeCsrf = async () => {
   return axios.get(`${BASE_URL}/sanctum/csrf-cookie`, { withCredentials: true });
 };
@@ -19,6 +22,20 @@ export const login = async (email, password) => {
       email,
       password,
     },
+    {
+      withCredentials: true,
+      // headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
+    },
+  );
+};
+
+/**
+ * @returns{Promise<AxiosResponse<any>>}
+ */
+export const logout = async () => {
+  return axios.post(
+    `${BASE_URL}/logout`,
+    {},
     {
       withCredentials: true,
       headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },

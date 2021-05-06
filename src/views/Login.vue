@@ -20,7 +20,7 @@
         <input
           class="w-full bg-indigo-700 hover:bg-indigo-500 text-white font-semibold py-2 px-4 mt-8 rounded cursor-pointer"
           type="submit"
-          value="Login"
+          :value="submitButtonText"
           :disabled="isLoading"
           @click.prevent="onSubmit"
         />
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 import { ValidationProvider } from 'vee-validate';
 
 export default {
@@ -57,12 +57,21 @@ export default {
       /** @type {string} */
       authError: state => state.auth.authError,
     }),
+
+    submitButtonText() {
+      return this.isLoading ? 'Please wait...' : 'Login';
+    },
   },
 
   methods: {
     ...mapActions({
-      attemptLogin: 'auth/ATTEMPT_LOGIN',
+      login: 'auth/LOGIN',
       clearAuthError: 'auth/CLEAR_AUTH_ERROR',
+      showSnack: 'app/SHOW_SNACK',
+    }),
+
+    ...mapMutations({
+      setAuthError: 'auth/SET_AUTH_ERROR',
     }),
 
     onSubmit() {
@@ -70,20 +79,19 @@ export default {
       this.isLoading = true;
 
       if (this.isAuthorized) {
+        this.setAuthError('Already authorized!');
+        this.isLoading = false;
+
         return;
       }
 
-      this.attemptLogin({
+      this.login({
         email: this.email,
         password: this.password,
       });
 
+      this.showSnack({ message: 'Succesfully logged in!' });
       this.isLoading = false;
-    },
-
-    resetForm() {
-      this.email = '';
-      this.password = '';
     },
   },
 };

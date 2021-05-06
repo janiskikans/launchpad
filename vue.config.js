@@ -20,6 +20,7 @@ module.exports = {
         '@helpers': path.resolve(__dirname, 'src/helpers'),
         '@store': path.resolve(__dirname, 'src/store'),
         '@loaders': path.resolve(__dirname, 'src/loaders'),
+        '@router': path.resolve(__dirname, 'src/router'),
       },
     },
     plugins: [
