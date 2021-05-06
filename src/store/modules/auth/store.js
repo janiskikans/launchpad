@@ -1,4 +1,4 @@
-import { initializeCsrf, login, logout } from '@api/launchpadApi/authApi';
+import { initializeCsrf, login, logout, getUser } from '@api/launchpadApi/authApi';
 import * as types from '@store/modules/auth/types';
 import User from '@/structures/user';
 import router, { ROUTE_DASHBOARD, ROUTE_LOGIN } from '@router';
@@ -44,22 +44,54 @@ export default {
 
       commit(types.SET_CURRENT_USER, new User(response.data.data));
       commit(types.SET_IS_AUTHORIZED, true);
-      router.push(ROUTE_DASHBOARD);
+      router.push({ name: ROUTE_DASHBOARD });
     },
 
-    async [types.LOGOUT]({ commit }) {
+    async [types.LOGOUT]({ dispatch }) {
       const response = await logout();
       if (!response.data || !response.data.success) {
         return;
       }
 
-      commit(types.SET_CURRENT_USER, null);
-      commit(types.SET_IS_AUTHORIZED, false);
-      router.push(ROUTE_LOGIN);
+      dispatch(types.CLEAR_AUTH);
+
+      router.push({ name: ROUTE_LOGIN });
     },
 
-    async [types.CLEAR_AUTH_ERROR]({ commit }) {
+    [types.CLEAR_AUTH_ERROR]({ commit }) {
       commit(types.SET_AUTH_ERROR, '');
+    },
+
+    [types.CHECK_AUTH]({ state, dispatch }) {
+      if (!state.isAuthorized) {
+        return;
+      }
+
+      getUser()
+        .then(response => {
+          // If request failed or no user data returned then we assume that session has expired/user has logged out
+          if (response.status !== 200 || !response.data) {
+            dispatch(types.CLEAR_AUTH);
+
+            return;
+          }
+
+          // If returned user ID does not match with the one stored in state, then we assume that persisted state has been tempered with and we expire auth
+          if (response.data.id !== state.currentUser.id) {
+            dispatch(types.CLEAR_AUTH);
+
+            return;
+          }
+        })
+        .catch(() => {
+          dispatch(types.CLEAR_AUTH);
+        });
+    },
+
+    [types.CLEAR_AUTH]({ commit }) {
+      commit(types.SET_CURRENT_USER, null);
+      commit(types.SET_IS_AUTHORIZED, false);
+      window.sessionStorage.clear(); // TODO: Remove when not using session storage anymore
     },
   },
 };

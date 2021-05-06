@@ -7,3 +7,5 @@ export const SET_IS_AUTHORIZED = 'SET_IS_AUTHORIZED';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_AUTH_ERROR = 'CLEAR_AUTH_ERROR';
+export const CHECK_AUTH = 'CHECK_AUTH';
+export const CLEAR_AUTH = 'CLEAR_AUTH';

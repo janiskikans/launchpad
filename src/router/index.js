@@ -44,6 +44,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  // Ensure that we are still authorized
+  store.dispatch('auth/CHECK_AUTH');
+
   /** @type {boolean} */
   const isAuthorized = store.state.auth.isAuthorized;
 

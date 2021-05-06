@@ -24,7 +24,6 @@ export const login = async (email, password) => {
     },
     {
       withCredentials: true,
-      // headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
     },
   );
 };
@@ -38,7 +37,6 @@ export const logout = async () => {
     {},
     {
       withCredentials: true,
-      headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
     },
   );
 };
@@ -50,6 +48,5 @@ export const logout = async () => {
 export const getUser = async () => {
   return axios.get(`${BASE_URL}/api/me`, {
     withCredentials: true,
-    headers: { 'X-XSRF-TOKEN': 'XSRF-TOKEN' },
   });
 };
