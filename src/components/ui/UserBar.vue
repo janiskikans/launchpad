@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white p-4">
+  <div class="text-white p-4 flex items-center">
     <span>
       Logged in as
       <span class="font-semibold">{{ currentUser.name }}.</span>

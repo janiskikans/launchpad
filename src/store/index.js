@@ -16,6 +16,7 @@ export default new Vuex.Store({
   },
   plugins: [
     createPersistedState({
+      paths: ['auth.isAuthorized', 'auth.currentUser'],
       // storage: {
       //   getItem: key => Cookies.get(key),
       //   setItem: (key, value) => {

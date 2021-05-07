@@ -5,5 +5,5 @@ extend('email', email);
 
 extend('required', {
   ...required,
-  message: 'This field is required',
+  message: '{_field_} is required',
 });

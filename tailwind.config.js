@@ -19,5 +19,10 @@ module.exports = {
       ...theme('colors'),
     }),
   },
+  variants: {
+    extend: {
+      opacity: ['disabled'],
+    },
+  },
   darkMode: 'class',
 };

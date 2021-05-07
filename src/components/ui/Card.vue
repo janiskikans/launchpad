@@ -1,7 +1,10 @@
 <template>
   <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
     <div v-if="hasHeader" class="border-b border-gray-200 px-4 py-3">
-      <h1 class="text-xl font-bold">{{ title }}</h1>
+      <h1 class="text-xl font-bold flex items-center">
+        <ion-icon v-if="icon" :name="icon" class="pr-2" />
+        {{ title }}
+      </h1>
     </div>
     <div class="px-4 py-3">
       <slot>Card content</slot>
@@ -23,6 +26,11 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+    icon: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
 };

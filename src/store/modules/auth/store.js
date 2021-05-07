@@ -28,23 +28,28 @@ export default {
       }
 
       await initializeCsrf();
-      const response = await login(email, password);
 
-      if (!response.data) {
-        commit(types.SET_AUTH_ERROR, 'There was a problem loggin in');
+      login(email, password)
+        .then(response => {
+          if (!response.data) {
+            commit(types.SET_AUTH_ERROR, 'There was a problem loggin in');
 
-        return;
-      }
+            return;
+          }
 
-      if (response.data.message) {
-        commit(types.SET_AUTH_ERROR, response.message);
+          commit(types.SET_CURRENT_USER, new User(response.data.data));
+          commit(types.SET_IS_AUTHORIZED, true);
+          router.push({ name: ROUTE_DASHBOARD });
+        })
+        .catch(error => {
+          if (error.response.data.message) {
+            commit(types.SET_AUTH_ERROR, error.response.data.message);
 
-        return;
-      }
+            return;
+          }
 
-      commit(types.SET_CURRENT_USER, new User(response.data.data));
-      commit(types.SET_IS_AUTHORIZED, true);
-      router.push({ name: ROUTE_DASHBOARD });
+          commit(types.SET_AUTH_ERROR, 'There was a problem loggin in');
+        });
     },
 
     async [types.LOGOUT]({ dispatch }) {

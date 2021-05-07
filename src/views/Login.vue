@@ -1,45 +1,64 @@
 <template>
   <div class="flex justify-center my-12 sm:my-32">
-    <div class="w-11/12 sm:w-10/12 md:w-4/12 mx-auto bg-gray-100 rounded-md p-6 py-8 shadow-lg">
-      <div class="text-center text-2xl mb-2">Login</div>
-      <form class="login-form">
-        <div>
-          <label for="email" class="block mb-2 font-semibold">Email</label>
-          <ValidationProvider v-slot="{ errors }" rules="required|email">
-            <input id="email" v-model="email" type="email" name="email" class="login-form__text-input" />
-            <span class="text-sm text-red-700">{{ errors[0] }}</span>
-          </ValidationProvider>
-        </div>
-        <div class="mt-4">
-          <label for="password" class="block mb-2 font-semibold">Password</label>
-          <ValidationProvider v-slot="{ errors }" rules="required">
-            <input id="password" v-model="password" type="password" name="password" class="login-form__text-input" />
-            <span class="text-sm text-red-700">{{ errors[0] }}</span>
-          </ValidationProvider>
-        </div>
-        <input
-          class="w-full bg-indigo-700 hover:bg-indigo-500 text-white font-semibold py-2 px-4 mt-8 rounded cursor-pointer"
-          type="submit"
-          :value="submitButtonText"
-          :disabled="isLoading"
-          @click.prevent="onSubmit"
-        />
-      </form>
+    <div class="w-11/12 sm:w-10/12 md:w-6/12 lg:w-4/12 xl:w-3/12 mx-auto bg-white rounded-md p-6 sm:p-12 shadow-lg">
+      <div class="text-center text-2xl sm:text-3xl mb-6 sm:mb-8 font-light">Sign in to Dashboard</div>
+      <ValidationObserver v-slot="{ handleSubmit }">
+        <form class="login-form" @submit.prevent="handleSubmit(onSubmit)">
+          <div class="mt-4 mb-6">
+            <ValidationProvider v-slot="{ errors }" name="Email" rules="required|email">
+              <input
+                id="email"
+                v-model="email"
+                type="email"
+                name="email"
+                placeholder="Email"
+                class="login-form__text-input"
+                :class="{ 'border-red-600': errors.length }"
+                @click="clearAuthError()"
+              />
+              <span class="text-sm text-red-600">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </div>
+          <div class="my-4">
+            <ValidationProvider v-slot="{ errors }" name="Password" rules="required">
+              <input
+                id="password"
+                v-model="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+                class="login-form__text-input"
+                :class="{ 'border-red-600': errors.length }"
+                @click="clearAuthError()"
+              />
+              <span class="text-sm text-red-600">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </div>
 
-      <div v-if="authError" class="text-sm text-red-700 mt-4">{{ authError }}</div>
+          <div v-if="authError" class="text-sm text-red-600 my-1">{{ authError }}</div>
+
+          <input
+            class="w-full bg-indigo-700 hover:bg-indigo-600 text-white font-semibold my-4 py-2 px-4 rounded cursor-pointer disabled:opacity-70"
+            type="submit"
+            :value="submitButtonText"
+            :disabled="isLoading"
+          />
+        </form>
+      </ValidationObserver>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import { ValidationProvider } from 'vee-validate';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   name: 'Login',
 
   components: {
     ValidationProvider,
+    ValidationObserver,
   },
 
   data() {
@@ -59,7 +78,7 @@ export default {
     }),
 
     submitButtonText() {
-      return this.isLoading ? 'Please wait...' : 'Login';
+      return this.isLoading ? 'Please wait...' : 'Sign in';
     },
   },
 
@@ -90,7 +109,7 @@ export default {
         password: this.password,
       });
 
-      this.showSnack({ message: 'Succesfully logged in!' });
+      this.showSnack({ message: 'Succesfully signed in!' });
       this.isLoading = false;
     },
   },
@@ -100,7 +119,7 @@ export default {
 <style lang="scss" scoped>
 .login-form {
   &__text-input {
-    @apply w-full p-2 border-b-2 border-indigo-500 focus:bg-gray-50 focus:border-red-600 outline-none;
+    @apply w-full p-2 border-b-2 bg-gray-100 outline-none mb-1;
   }
 }
 </style>

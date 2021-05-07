@@ -54,7 +54,13 @@ export default {
 
   methods: {
     loadUpcomingLaunches() {
-      getUpcomingLaunches().then(launches => this.setUpcomingLaunches(launches));
+      getUpcomingLaunches()
+        .then(launches => this.setUpcomingLaunches(launches))
+        .catch(() => {
+          console.error('There was a problem retrieving upcoming launches');
+          this.upcomingLaunches = [];
+          this.isLoading = false;
+        });
     },
 
     /**

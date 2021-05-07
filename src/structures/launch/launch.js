@@ -3,6 +3,7 @@ import DataSource from '@structures/dataSource';
 import LaunchMission from '@structures/launch/launchMission';
 import LaunchPad from '@structures/launch/launchPad';
 import LaunchServiceProvider from '@structures/launch/launchServiceProvider';
+import ExternalUrl from '@structures/launch/externalUrl';
 
 export default class Launch {
   /** @type {number} */
@@ -41,6 +42,9 @@ export default class Launch {
   /** @type {LaunchPad|null} */
   pad = null;
 
+  /** @type {ExternalUrl[]} */
+  externalUrls = [];
+
   constructor(params = {}) {
     this.id = params.id;
     this.name = params.name;
@@ -54,6 +58,10 @@ export default class Launch {
     this.launchServiceProvider = new LaunchServiceProvider(params.launch_provider);
     this.mission = params.mission ? new LaunchMission(params.mission) : null;
     this.pad = params.launch_pad ? new LaunchPad(params.launch_pad) : null;
+
+    if (params.external_urls && params.external_urls.length) {
+      this.setExternalUrls(params.external_urls);
+    }
   }
 
   /**
@@ -69,5 +77,12 @@ export default class Launch {
    */
   hasMatchingLaunchWindowTimes() {
     return isEqual(this.windowStart, this.windowEnd);
+  }
+
+  /**
+   * @param {[{}]} externalUrls
+   */
+  setExternalUrls(externalUrls) {
+    externalUrls.forEach(externalUrl => this.externalUrls.push(new ExternalUrl(externalUrl)));
   }
 }
