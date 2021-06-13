@@ -53,7 +53,7 @@ export default {
     hasFooter: {
       type: Boolean,
       required: false,
-      default: true,
+      default: false,
     },
     hasCloseButton: {
       type: Boolean,

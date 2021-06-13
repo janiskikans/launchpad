@@ -12,14 +12,15 @@
 
       <nav class="flex flex-wrap items-center text-base">
         <div id="nav">
-          <router-link to="/" tag="button" class="nav-button mr-2">
+          <router-link to="/" tag="button" class="nav-button mr-2" exact>
             Upcoming Launches
-          </router-link>
-          <router-link v-if="isAuthorized" to="/dashboard" tag="button" class="nav-button mr-2">
-            Dashboard
           </router-link>
           <router-link to="/about" tag="button" class="nav-button">
             About
+          </router-link>
+          <router-link v-if="isAuthorized" to="/dashboard" tag="button" class="nav-button mr-2">
+            Dashboard
+            <ion-icon name="lock-closed-outline" size="small" />
           </router-link>
         </div>
       </nav>
@@ -80,7 +81,7 @@ export default {
   @apply md:text-xl py-1 md:py-2 px-2 md:px-4 dark:hover:text-gray-100 hover:text-gray-600 transition duration-200 ease-in-out select-none focus:outline-none;
 }
 
-.router-link-exact-active {
+.router-link-active {
   @apply dark:text-gray-200 text-white font-medium;
 }
 </style>
