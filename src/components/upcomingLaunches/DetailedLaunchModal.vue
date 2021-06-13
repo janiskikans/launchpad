@@ -94,17 +94,11 @@
         </div>
       </card>
 
-      <card title="Videos/Livestreams" icon="videocam-outline" class="col-span-full">
-        <div v-if="launch.externalUrls.length">
-          <ul class="space-y-2">
-            <li v-for="url in launch.externalUrls" :key="url.id">
-              <better-link :href="url.url" :text="url.title" is-external />
-            </li>
-          </ul>
-        </div>
-        <div v-else>
-          No videos or livestreams available
-        </div>
+      <card title="Videos & Livestreams" icon="videocam-outline" class="col-span-3 md:col-span-full">
+        <video-grid v-if="launch.externalUrls.length" :video-links="launch.externalUrls" class="my-2" />
+        <p v-else>
+          No videos or livestreams available for this launch
+        </p>
       </card>
     </div>
   </div>
@@ -117,7 +111,7 @@ import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
 import Launch from '@/structures/launch/launch';
-import BetterLink from '@components/utils/BetterLink.vue';
+import VideoGrid from '@components/ui/VideoGrid';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -125,7 +119,7 @@ export default {
   components: {
     Card,
     LaunchStatusBadge,
-    BetterLink,
+    VideoGrid,
   },
 
   props: {

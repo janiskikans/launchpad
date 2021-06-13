@@ -86,7 +86,6 @@ export default {
     ...mapActions({
       login: 'auth/LOGIN',
       clearAuthError: 'auth/CLEAR_AUTH_ERROR',
-      showSnack: 'app/SHOW_SNACK',
     }),
 
     ...mapMutations({
@@ -109,7 +108,6 @@ export default {
         password: this.password,
       });
 
-      this.showSnack({ message: 'Succesfully signed in!' });
       this.isLoading = false;
     },
   },
