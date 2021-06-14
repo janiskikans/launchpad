@@ -1,7 +1,7 @@
 import { initializeCsrf, login, logout, getUser } from '@api/launchpadApi/authApi';
 import * as types from '@store/modules/auth/types';
 import User from '@/structures/user';
-import router, { ROUTE_DASHBOARD, ROUTE_LOGIN } from '@router';
+import router, { ROUTE_DASHBOARD_OVERVIEW, ROUTE_LOGIN } from '@router';
 
 export default {
   namespaced: true,
@@ -39,7 +39,7 @@ export default {
 
           commit(types.SET_CURRENT_USER, new User(response.data.data));
           commit(types.SET_IS_AUTHORIZED, true);
-          router.push({ name: ROUTE_DASHBOARD });
+          router.push({ name: ROUTE_DASHBOARD_OVERVIEW });
         })
         .catch(error => {
           if (error.response.data.message) {

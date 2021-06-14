@@ -1,7 +1,7 @@
 <template>
   <div class="video-grid">
     <div v-for="link in videoLinks" :key="link.id" class="video-grid__card" @click="onVideoClick(link.url)">
-      <img :src="link.previewImageUrl" :alt="link.title" width="100%" height="100%" />
+      <img :src="link.previewImageUrl" :alt="link.title" width="100%" height="100%" @error="loadPlaceholderImage" />
       <div class="video-grid__overlay">
         <h1>{{ link.title }}</h1>
       </div>
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
+
 export default {
   name: 'VideoGrid',
 
@@ -20,12 +22,22 @@ export default {
     },
   },
 
+  data() {
+    return {
+      placeholderImage: placeholderImageUrl,
+    };
+  },
+
   methods: {
     /**
      * @param {string} videoUrl
      */
     onVideoClick(videoUrl) {
       window.open(videoUrl, '_blank', 'noopener').focus();
+    },
+
+    loadPlaceholderImage(e) {
+      e.target.src = this.placeholderImage;
     },
   },
 };

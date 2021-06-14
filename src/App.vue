@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <snackbar class="z-10" />
+    <snackbar class="z-20" />
     <user-bar v-if="showUserBar" class="bg-gray-700 h-16 shadow-lg">Test</user-bar>
     <theme-toggler :current-theme="theme" class="absolute top-4 right-4 hidden lg:block" @change-theme="changeTheme" />
 
