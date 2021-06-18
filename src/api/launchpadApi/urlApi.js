@@ -12,9 +12,17 @@ export const getUrls = async () => {
 
 /**
  * Create a new link
- * @param {{}} linkData 
+ * @param {{}} linkData
  * @return {Promise<AxiosResponse<any>>}
  */
-export const createUrl = async (linkData) => {
-  return axios.post(BASE_URL, linkData,  { withCredentials: true });
+export const createUrl = async linkData => {
+  return axios.post(BASE_URL, linkData, { withCredentials: true });
+};
+
+/**
+ * Returns all possible external URL types
+ * @return {Promise<AxiosResponse<any>>}
+ */
+export const getTypes = async () => {
+  return axios.get(`${BASE_URL}/types`);
 };

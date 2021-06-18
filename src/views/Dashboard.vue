@@ -59,7 +59,7 @@ export default {
 }
 
 .dashboard-content {
-  @apply flex-1 overflow-auto;
+  @apply flex-1 overflow-auto w-full;
 }
 
 .router-link-active {

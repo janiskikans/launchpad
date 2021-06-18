@@ -1,7 +1,12 @@
 <template>
-  <div class="space-y-4">
-    <div class="bg-white shadow rounded-md p-4">
-      <button @click="showAddLinkModal">Add Link</button>
+  <div>
+    <div class="shadow rounded-md mb-4">
+      <button
+        class="text-white bg-gray-500 hover:bg-gray-400 py-1.5 px-2.5 rounded-md cursor-pointer focus:outline-none"
+        @click="showAddLinkModal"
+      >
+        Add Link
+      </button>
     </div>
 
     <data-table
@@ -12,7 +17,7 @@
       @on-previous="onPreviousPage"
     />
 
-    <modal v-if="isAddLinkModalVisible" @close-modal="isAddLinkModalVisible = false">
+    <modal v-if="isAddLinkModalVisible" @close-modal="closeAddLinkModal">
       <template v-slot:header>
         <span class="text-xl">Add a New Link</span>
       </template>
@@ -35,7 +40,7 @@ export default {
   components: {
     DataTable,
     Modal: () => import('@components/ui/Modal'),
-    AddLinkForm: () => import('@components/dashboard/addLinkForm'),
+    AddLinkForm: () => import('@components/dashboard/AddLinkForm'),
   },
 
   data() {
@@ -89,6 +94,10 @@ export default {
 
     showAddLinkModal() {
       this.isAddLinkModalVisible = true;
+    },
+
+    closeAddLinkModal() {
+      this.isAddLinkModalVisible = false;
     },
 
     onNewLinkAdded() {
