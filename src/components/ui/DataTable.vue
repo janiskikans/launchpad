@@ -6,6 +6,7 @@
           <th v-for="(header, index) in headers" :key="index">
             {{ header.text }}
           </th>
+          <th v-if="hasActions"></th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +19,10 @@
               is-external
               has-simple-style
             />
-            <span v-else>{{ item[column.value] }}</span>
+            <span v-else class="capitalize">{{ item[column.value] }}</span>
+          </td>
+          <td v-if="hasActions">
+            <dropdown title="Actions" :items="actions" @on-item-clicked="onActionClicked($event, item.id)" />
           </td>
         </tr>
       </tbody>
@@ -36,13 +40,15 @@
 
 <script>
 import BetterLink from '@components/utils/BetterLink';
-import { DATA_TYPE_LINK } from '@helpers/dataTableHelper';
+import { DATA_TYPE_LINK, ACTION_DELETE, ACTION_EDIT } from '@helpers/dataTableHelper';
+import Dropdown from '@components/ui/Dropdown';
 
 export default {
   name: 'DataTable',
 
   components: {
     BetterLink,
+    Dropdown,
   },
 
   props: {
@@ -54,6 +60,35 @@ export default {
       type: Array,
       required: true,
     },
+    hasDelete: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    hasEdit: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+
+  data() {
+    return {
+      actions: [],
+    };
+  },
+
+  computed: {
+    /**
+     * @return {boolean}
+     */
+    hasActions() {
+      return this.hasDelete || this.hasEdit;
+    },
+  },
+
+  mounted() {
+    this.initActions();
   },
 
   methods: {
@@ -71,6 +106,30 @@ export default {
      */
     isLinkType(type) {
       return type && type === DATA_TYPE_LINK;
+    },
+
+    initActions() {
+      if (this.hasEdit) {
+        this.actions.push({ title: 'Edit', value: ACTION_EDIT });
+      }
+
+      if (this.hasDelete) {
+        this.actions.push({ title: 'Delete', value: ACTION_DELETE });
+      }
+    },
+
+    /**
+     * @param {string} action
+     * @param {string} id
+     */
+    onActionClicked(action, id) {
+      if (action === ACTION_EDIT) {
+        this.$emit('on-item-edit', id);
+      }
+
+      if (action === ACTION_DELETE) {
+        this.$emit('on-item-delete', id);
+      }
     },
   },
 };

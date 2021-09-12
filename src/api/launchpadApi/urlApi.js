@@ -20,6 +20,15 @@ export const createUrl = async linkData => {
 };
 
 /**
+ * Delete a link by ID
+ * @param {Number} urlId
+ * @returns {Promise<AxiosResponse<any>}
+ */
+export const deleteUrl = async urlId => {
+  return axios.delete(`${BASE_URL}/?id=${urlId}`);
+};
+
+/**
  * Returns all possible external URL types
  * @return {Promise<AxiosResponse<any>>}
  */

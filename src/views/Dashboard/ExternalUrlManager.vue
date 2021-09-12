@@ -11,6 +11,8 @@
 
     <data-table
       v-if="urls.length"
+      has-delete
+      has-edit
       :headers="tableHeaders"
       :items="urls"
       @on-next="onNextPage"
