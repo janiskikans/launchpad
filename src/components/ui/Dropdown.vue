@@ -30,7 +30,7 @@
             href="#"
             class="dropdown-item"
             role="menuitem"
-            @click="onItemClick(item.value)"
+            @click.prevent="onItemClick(item.value)"
           >
             {{ item.title }}
           </a>

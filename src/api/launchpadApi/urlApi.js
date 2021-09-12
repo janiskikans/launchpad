@@ -25,7 +25,7 @@ export const createUrl = async linkData => {
  * @returns {Promise<AxiosResponse<any>}
  */
 export const deleteUrl = async urlId => {
-  return axios.delete(`${BASE_URL}/?id=${urlId}`);
+  return axios.delete(`${BASE_URL}/${urlId}`, { withCredentials: true });
 };
 
 /**

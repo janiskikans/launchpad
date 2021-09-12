@@ -12,11 +12,11 @@
     <data-table
       v-if="urls.length"
       has-delete
-      has-edit
       :headers="tableHeaders"
       :items="urls"
       @on-next="onNextPage"
       @on-previous="onPreviousPage"
+      @on-item-delete="onUrlDelete"
     />
 
     <modal v-if="isAddLinkModalVisible" @close-modal="closeAddLinkModal">
@@ -31,10 +31,11 @@
 </template>
 
 <script>
-import { getUrls } from '@api/launchpadApi/urlApi';
+import { getUrls, deleteUrl } from '@api/launchpadApi/urlApi';
 import DataTable from '@components/ui/DataTable';
 import { DATA_TYPE_LINK } from '@helpers/dataTableHelper';
 import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'ExternalUrlManager',
@@ -65,6 +66,10 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      showSnack: 'app/SHOW_SNACK',
+    }),
+
     loadData() {
       getUrls().then(response => {
         this.urls = response.data.data;
@@ -105,6 +110,30 @@ export default {
     onNewLinkAdded() {
       this.isAddLinkModalVisible = false;
       this.loadData();
+    },
+
+    /**
+     * @param {string} urlId
+     */
+    onUrlDelete(urlId) {
+      if (!confirm(`Delete URL ${urlId}?`)) {
+        return;
+      }
+
+      deleteUrl(urlId)
+        .then(() => {
+          this.showSnack({ message: 'Link deleted succesfully!' });
+          this.loadData();
+        })
+        .catch(error => {
+          if (error.response.data.message) {
+            this.showSnack({ message: error.response.data.message });
+
+            return;
+          }
+
+          this.showSnack({ message: 'Could not delete link' });
+        });
     },
   },
 };
