@@ -96,7 +96,6 @@ export default {
     [types.CLEAR_AUTH]({ commit }) {
       commit(types.SET_CURRENT_USER, null);
       commit(types.SET_IS_AUTHORIZED, false);
-      window.sessionStorage.clear(); // TODO: Remove when not using session storage anymore
     },
   },
 };
