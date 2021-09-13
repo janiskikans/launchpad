@@ -70,7 +70,10 @@
           </article>
           <article>
             <h3 class="font-bold">Description</h3>
-            <p>{{ launch.mission.description ? launch.mission.description : 'Not specified' }}</p>
+            <text-collapse
+              :text-content="launch.mission.description ? launch.mission.description : 'Not specified'"
+              class="mt-2"
+            />
           </article>
         </div>
         <div v-else>
@@ -112,6 +115,7 @@ import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
 import Launch from '@/structures/launch/launch';
 import VideoGrid from '@components/ui/VideoGrid';
+import TextCollapse from '@components/ui/TextCollapse';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -120,6 +124,7 @@ export default {
     Card,
     LaunchStatusBadge,
     VideoGrid,
+    TextCollapse,
   },
 
   props: {
