@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <aside class="dashboard-navbar">
       <div class="text-center mb-4">
-        <h1 class="text-lg tracking-wide">Dashboard</h1>
+        <h1 class="text-lg tracking-wide">Menu</h1>
       </div>
       <nav class="flex-grow px-4 pb-4">
         <router-link to="/dashboard" class="dashboard-navbar__link" exact>

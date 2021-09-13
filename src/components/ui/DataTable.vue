@@ -160,7 +160,7 @@ export default {
   }
 
   &__footer {
-    @apply bg-gray-50 text-gray-600 px-4 py-2 border-t border-gray-200;
+    @apply bg-gray-50 text-gray-600 px-4 py-2 pt-4 border-t border-gray-200;
   }
 }
 </style>
