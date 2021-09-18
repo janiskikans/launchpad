@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white p-4 flex items-center">
+  <div class="text-white p-4 flex items-center bg-blue-500 dark:bg-gray-700">
     <span>
       Logged in as
       <span class="font-semibold">{{ currentUser.name }}.</span>
