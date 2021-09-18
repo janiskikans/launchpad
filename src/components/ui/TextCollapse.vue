@@ -1,7 +1,11 @@
 <template>
   <div>
     <p>{{ content }}</p>
-    <button v-if="isButtonVisible" class="text-gray-700 font-semibold" @click.prevent="onReadMoreClick">
+    <button
+      v-if="isButtonVisible"
+      class="text-gray-700 font-semibold focus:outline-none"
+      @click.prevent="onReadMoreClick"
+    >
       {{ buttonText }}
     </button>
   </div>

@@ -47,7 +47,16 @@
           </article>
           <article>
             <h3 class="font-bold">Country</h3>
-            <p>{{ launch.launchServiceProvider.country ? launch.launchServiceProvider.country : 'Not specified' }}</p>
+            <div class="flex flex-row items-center">
+              <span class="pr-1">
+                {{ launch.launchServiceProvider.country ? launch.launchServiceProvider.country : 'Not specified' }}
+              </span>
+              <country-flag
+                v-if="launch.launchServiceProvider.country"
+                :country="launch.launchServiceProvider.country"
+                size="small"
+              />
+            </div>
           </article>
         </div>
       </card>
@@ -116,6 +125,7 @@ import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png'
 import Launch from '@/structures/launch/launch';
 import VideoGrid from '@components/ui/VideoGrid';
 import TextCollapse from '@components/ui/TextCollapse';
+import CountryFlag from 'vue-country-flag';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -125,6 +135,7 @@ export default {
     LaunchStatusBadge,
     VideoGrid,
     TextCollapse,
+    CountryFlag,
   },
 
   props: {
