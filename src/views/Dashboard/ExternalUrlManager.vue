@@ -10,7 +10,6 @@
     </div>
 
     <data-table
-      v-if="urls.length"
       has-delete
       :headers="tableHeaders"
       :items="urls"
