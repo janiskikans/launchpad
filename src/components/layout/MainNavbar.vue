@@ -11,7 +11,7 @@
       </div>
 
       <nav class="flex flex-wrap items-center text-base">
-        <div id="nav">
+        <div v-if="showNavButtons" id="nav">
           <router-link to="/" tag="button" class="nav-button mr-2" exact>
             Upcoming Launches
           </router-link>
@@ -33,6 +33,14 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'MainNavbar',
+
+  props: {
+    showNavButtons: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+  },
 
   data() {
     return {
