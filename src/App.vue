@@ -5,16 +5,16 @@
     <theme-toggler :current-theme="theme" class="absolute top-4 right-4 hidden lg:block" @change-theme="changeTheme" />
 
     <header class="my-6 md:my-8 lg:my-12">
-      <main-navbar :show-nav-buttons="!isMainteneceActive" />
+      <main-navbar :show-nav-buttons="!isMaintenanceActive" />
     </header>
 
     <main>
-      <keep-alive v-if="!isMainteneceActive" include="UpcomingLaunches">
+      <keep-alive v-if="!isMaintenanceActive" include="UpcomingLaunches">
         <XyzTransition xyz="fade duration-2" mode="out-in">
           <router-view />
         </XyzTransition>
       </keep-alive>
-      <maintenance v-if="isMainteneceActive" />
+      <maintenance v-if="isMaintenanceActive" />
     </main>
 
     <main-footer class="mb-6" />
@@ -68,7 +68,7 @@ export default {
     /**
      * @return {boolean}
      */
-    isMainteneceActive() {
+    isMaintenanceActive() {
       return process.env.VUE_APP_IS_MAINTENENCE_ACTIVE === 'true';
     },
   },
