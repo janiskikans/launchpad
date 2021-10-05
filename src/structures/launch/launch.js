@@ -55,7 +55,9 @@ export default class Launch {
     this.status = params.status;
     this.image = params.image_url ?? '';
     this.dataSource = new DataSource(params.data_source);
-    this.launchServiceProvider = new LaunchServiceProvider(params.launch_provider);
+    this.launchServiceProvider = params.launch_service_provider
+      ? new LaunchServiceProvider(params.launch_service_provider)
+      : null;
     this.mission = params.mission ? new LaunchMission(params.mission) : null;
     this.pad = params.launch_pad ? new LaunchPad(params.launch_pad) : null;
 
