@@ -28,6 +28,7 @@ module.exports = {
         files: ['src/**/*.{vue,scss}'],
       }),
     ],
+    productionSourceMap: process.env.NODE_ENV != 'production',
     devServer: {
       host: 'launchpadapp.test',
     },
