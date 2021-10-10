@@ -8,6 +8,7 @@ module.exports = {
       title: 'Launchpad',
     },
   },
+  productionSourceMap: process.env.NODE_ENV != 'production',
   configureWebpack: {
     resolve: {
       alias: {
@@ -28,7 +29,6 @@ module.exports = {
         files: ['src/**/*.{vue,scss}'],
       }),
     ],
-    productionSourceMap: process.env.NODE_ENV != 'production',
     devServer: {
       host: 'launchpadapp.test',
     },
