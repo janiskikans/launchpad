@@ -31,7 +31,7 @@ export function isBadStatus(status) {
  * @return {boolean}
  */
 export function isNeutralStatus(status) {
-  return !this.isGoodStatus(status) && !this.isBadStatus(status);
+  return !isGoodStatus(status) && !isBadStatus(status);
 }
 
 /**

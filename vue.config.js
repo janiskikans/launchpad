@@ -8,6 +8,7 @@ module.exports = {
       title: 'Launchpad',
     },
   },
+  productionSourceMap: process.env.NODE_ENV != 'production',
   configureWebpack: {
     resolve: {
       alias: {
