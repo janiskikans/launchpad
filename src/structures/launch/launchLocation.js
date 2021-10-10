@@ -1,4 +1,4 @@
-export default class LaunchMission {
+export default class LaunchLocation {
   /** @type {number} */
   id;
 
@@ -6,13 +6,10 @@ export default class LaunchMission {
   name = '';
 
   /** @type {string} */
-  type = '';
+  country = '';
 
   /** @type {string} */
-  orbit = '';
-
-  /** @type {string} */
-  description = '';
+  locationUrl = '';
 
   /** @type {number} */
   dataSourceId;
@@ -20,9 +17,8 @@ export default class LaunchMission {
   constructor(params = {}) {
     this.id = params.id;
     this.name = params.name;
-    this.type = params.type ?? '';
-    this.orbit = params.orbit ?? '';
-    this.description = params.description ?? '';
+    this.country = params.country ?? '';
+    this.locationUrl = params.location_url ?? '';
     this.dataSourceId = params.data_source_id;
   }
 }

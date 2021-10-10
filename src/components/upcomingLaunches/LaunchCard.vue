@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <modal v-show="showLaunchModal" :has-footer="true" @close-modal="showLaunchModal = false">
+    <modal v-show="showLaunchModal" @close-modal="showLaunchModal = false">
       <template v-slot:header>
         <span class="sm:mr-24 text-2xl">{{ launch.name }}</span>
       </template>
@@ -58,13 +58,14 @@
 </template>
 
 <script>
-import Launch from '@structures/launch/launch';
 import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
 import { disableBodyScroll } from '@helpers/uiHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
+import Launch from '@/structures/launch/launch';
+import * as statusHelper from '@helpers/launchStatusHelper';
 
 export default {
   name: 'LaunchCard',
@@ -122,15 +123,15 @@ export default {
      * @return {string}
      */
     statusClass() {
-      if (this.launch.status.isGood()) {
+      if (statusHelper.isGoodStatus(this.launch.status)) {
         return 'bg-green-500';
       }
 
-      if (this.launch.status.isNeutral()) {
+      if (statusHelper.isNeutralStatus(this.launch.status)) {
         return 'bg-gray-600';
       }
 
-      if (this.launch.status.isBad()) {
+      if (statusHelper.isBadStatus(this.launch.status)) {
         return 'bg-red-500';
       }
 
@@ -143,11 +144,11 @@ export default {
     bodyClass() {
       let classList = 'launch-card__body';
 
-      if (this.launch.getDistanceFromNowInHours() < 24 && this.launch.status.isGood()) {
+      if (this.launch.getDistanceFromNowInHours() < 24 && statusHelper.isGoodStatus(this.launch.status)) {
         classList += ' border-b-4 lg:border-r-4 lg:border-b-0 border-green-500';
       }
 
-      if (this.launch.status.isBad()) {
+      if (statusHelper.isBadStatus(this.launch.status)) {
         classList += ' border-b-4 lg:border-r-4 lg:border-b-0 border-red-500';
       }
 

@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/*.vue', './src/views/*.vue', './src/components/**/*.vue'],
+  purge: ['./src/*.vue', './src/views/*.vue', './src/views/Dashboard/*.vue', './src/components/**/*.vue'],
   theme: {
     maxWidth: {
       '1/4': '25%',
@@ -18,6 +18,11 @@ module.exports = {
     backgroundColor: theme => ({
       ...theme('colors'),
     }),
+  },
+  variants: {
+    extend: {
+      opacity: ['disabled'],
+    },
   },
   darkMode: 'class',
 };

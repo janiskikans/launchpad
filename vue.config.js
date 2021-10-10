@@ -18,6 +18,9 @@ module.exports = {
         '@structures': path.resolve(__dirname, 'src/structures'),
         '@services': path.resolve(__dirname, 'src/services'),
         '@helpers': path.resolve(__dirname, 'src/helpers'),
+        '@store': path.resolve(__dirname, 'src/store'),
+        '@loaders': path.resolve(__dirname, 'src/loaders'),
+        '@router': path.resolve(__dirname, 'src/router'),
       },
     },
     plugins: [
@@ -25,5 +28,8 @@ module.exports = {
         files: ['src/**/*.{vue,scss}'],
       }),
     ],
+    devServer: {
+      host: 'launchpadapp.test',
+    },
   },
 };

@@ -1,20 +1,20 @@
 <template>
   <div class="text-white uppercase text-center text-2xl">
     <span v-tooltip="launchStatusTooltip" class="rounded-lg px-1.5 py-1 opacity-90" :class="statusClass">
-      {{ launchStatus.getAbbreviation() }}
+      {{ statusMessage }}
     </span>
   </div>
 </template>
 
 <script>
-import LaunchStatus from '@structures/launch/launchStatus';
+import * as statusHelper from '@helpers/launchStatusHelper';
 
 export default {
   name: 'LaunchStatusBadge',
 
   props: {
     launchStatus: {
-      type: LaunchStatus,
+      type: String,
       required: true,
     },
     respondToDarkMode: {
@@ -28,10 +28,17 @@ export default {
     /**
      * @return {string}
      */
+    statusMessage() {
+      return statusHelper.getShortMessage(this.launchStatus);
+    },
+
+    /**
+     * @return {string}
+     */
     statusClass() {
       let baseClasses = this.respondToDarkMode ? 'dark:border-0 dark:text-white border' : '';
 
-      if (this.launchStatus.isGood()) {
+      if (statusHelper.isGoodStatus(this.launchStatus)) {
         if (!this.respondToDarkMode) {
           return 'bg-green-500';
         }
@@ -39,7 +46,7 @@ export default {
         return (baseClasses += ' dark:bg-green-500 border-green-500 text-green-500');
       }
 
-      if (this.launchStatus.isNeutral()) {
+      if (statusHelper.isNeutralStatus(this.launchStatus)) {
         if (!this.respondToDarkMode) {
           return 'bg-gray-600';
         }
@@ -47,7 +54,7 @@ export default {
         return (baseClasses += ' dark:bg-gray-600 border-gray-600 text-gray-600');
       }
 
-      if (this.launchStatus.isBad()) {
+      if (statusHelper.isBadStatus(this.launchStatus)) {
         if (!this.respondToDarkMode) {
           return 'bg-red-500';
         }
@@ -62,10 +69,11 @@ export default {
      * @return {string}
      */
     launchStatusTooltip() {
-      let content = '';
+      const fullMessage = statusHelper.getFullMessage(this.launchStatus);
 
-      if (this.launchStatus.name !== this.launchStatus.getAbbreviation()) {
-        content = this.launchStatus.name;
+      let content = '';
+      if (this.statusMessage !== fullMessage) {
+        content = fullMessage;
       }
 
       return {

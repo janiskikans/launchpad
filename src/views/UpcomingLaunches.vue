@@ -24,8 +24,8 @@
 
 <script>
 import LaunchCard from '@components/upcomingLaunches/LaunchCard';
-import { getUpcomingLaunches, getUpcomingLaunchesFromTestData } from '@services/launchService';
-import BetterLink from '@/components/utils/BetterLink.vue';
+import { getUpcomingLaunches } from '@services/launchService';
+import BetterLink from '@components/utils/BetterLink';
 
 export default {
   name: 'UpcomingLaunches',
@@ -54,15 +54,13 @@ export default {
 
   methods: {
     loadUpcomingLaunches() {
-      // If on production, then retrieve actual data from the API
-      if (process.env.NODE_ENV === 'production') {
-        getUpcomingLaunches().then(launches => this.setUpcomingLaunches(launches));
-
-        return;
-      }
-
-      // Retrieve launch data from local data
-      getUpcomingLaunchesFromTestData().then(launches => this.setUpcomingLaunches(launches));
+      getUpcomingLaunches()
+        .then(launches => this.setUpcomingLaunches(launches))
+        .catch(() => {
+          console.error('There was a problem retrieving upcoming launches');
+          this.upcomingLaunches = [];
+          this.isLoading = false;
+        });
     },
 
     /**

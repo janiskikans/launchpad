@@ -1,4 +1,4 @@
-import LaunchPadLocation from '@structures/launch/launchPadLocation';
+import LaunchLocation from '@structures/launch/launchLocation';
 
 export default class LaunchPad {
   /** @type {number} */
@@ -8,10 +8,10 @@ export default class LaunchPad {
   name = '';
 
   /** @type {string} */
-  wikiUrl = '';
+  infoUrl = '';
 
   /** @type {string} */
-  mapUrl = '';
+  locationUrl = '';
 
   /** @type {number|null} */
   latitude = null;
@@ -19,24 +19,16 @@ export default class LaunchPad {
   /** @type {number|null} */
   longitude = null;
 
-  /** @type {LaunchPadLocation|null} */
+  /** @type {LaunchLocation|null} */
   location = null;
-
-  /** @type {string} */
-  mapImage = '';
-
-  /** @type {number|null} */
-  totalLaunchCount = 0;
 
   constructor(params = {}) {
     this.id = params.id;
-    this.name = params.name ?? '';
-    this.wikiUrl = params.wiki_url ?? '';
-    this.mapUrl = params.map_url ?? '';
-    this.latitude = params.latitude ?? null;
-    this.longitude = params.longitude ?? null;
-    this.location = params.location ? new LaunchPadLocation(params.location) : null;
-    this.map_image = params.map_image ?? '';
-    this.totalLaunchCount = params.total_launch_count ?? null;
+    this.name = params.name;
+    this.infoUrl = params.info_url ?? '';
+    this.locationUrl = params.location_url ?? '';
+    this.latitude = parseFloat(params.latitude) ?? null;
+    this.longitude = parseFloat(params.longitude) ?? null;
+    this.location = params.launch_location ? new LaunchLocation(params.launch_location) : null;
   }
 }

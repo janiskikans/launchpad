@@ -25,10 +25,6 @@
             <p>{{ launch.name }}</p>
           </article>
           <article>
-            <h3 class="font-bold">In Hold</h3>
-            <p>{{ launch.inHold ? 'Yes' : 'No' }}</p>
-          </article>
-          <article>
             <h3 class="font-bold">Window Start</h3>
             <p>{{ launchWindowStart }}</p>
           </article>
@@ -50,6 +46,19 @@
               <h3 class="font-bold">Type</h3>
               <p>{{ launch.launchServiceProvider.type ? launch.launchServiceProvider.type : 'Not specified' }}</p>
             </article>
+            <article>
+              <h3 class="font-bold">Country</h3>
+              <div class="flex flex-row items-center">
+                <span class="pr-1">
+                  {{ launch.launchServiceProvider.country ? launch.launchServiceProvider.country : 'Not specified' }}
+                </span>
+                <country-flag
+                  v-if="launch.launchServiceProvider.country"
+                  :country="launch.launchServiceProvider.country"
+                  size="small"
+                />
+              </div>
+            </article>
           </div>
         </div>
         <div v-else>
@@ -70,16 +79,19 @@
           <article>
             <h3 class="font-bold">Orbit</h3>
             <p>
-              {{ launch.mission.orbit && launch.mission.orbit.name ? launch.mission.orbit.name : 'Not specified' }}
+              {{ launch.mission.orbit ? launch.mission.orbit : 'Not specified' }}
             </p>
           </article>
           <article>
             <h3 class="font-bold">Description</h3>
-            <p>{{ launch.mission.description ? launch.mission.description : 'Not specified' }}</p>
+            <text-collapse
+              :text-content="launch.mission.description ? launch.mission.description : 'Not specified'"
+              class="mt-2"
+            />
           </article>
         </div>
         <div v-else>
-          No mission information provided
+          No mission information available
         </div>
       </card>
 
@@ -95,20 +107,30 @@
           </article>
         </div>
         <div v-else>
-          No launch pad information provided
+          No launch pad information available
         </div>
+      </card>
+
+      <card title="Videos & Livestreams" icon="videocam-outline" class="col-span-3 md:col-span-full">
+        <video-grid v-if="launch.externalUrls.length" :video-links="launch.externalUrls" class="my-2" />
+        <p v-else>
+          No videos or livestreams available for this launch
+        </p>
       </card>
     </div>
   </div>
 </template>
 
 <script>
-import Launch from '@structures/launch/launch';
 import Card from '@components/ui/Card';
 import { format } from 'date-fns';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
+import Launch from '@/structures/launch/launch';
+import VideoGrid from '@components/ui/VideoGrid';
+import TextCollapse from '@components/ui/TextCollapse';
+import CountryFlag from 'vue-country-flag';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -116,6 +138,9 @@ export default {
   components: {
     Card,
     LaunchStatusBadge,
+    VideoGrid,
+    TextCollapse,
+    CountryFlag,
   },
 
   props: {
