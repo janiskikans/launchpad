@@ -64,6 +64,6 @@ export function getFullMessage(status) {
     case STATUS_TBD:
       return 'To Be Determined';
     default:
-      return this.getShortMessage(status);
+      return getShortMessage(status);
   }
 }
