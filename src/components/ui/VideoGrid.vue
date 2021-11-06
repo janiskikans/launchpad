@@ -3,7 +3,7 @@
     <div v-for="link in videoLinks" :key="link.id" class="video-grid__card" @click="onVideoClick(link.url)">
       <img :src="link.previewImageUrl" :alt="link.title" width="100%" height="100%" @error="loadPlaceholderImage" />
       <div class="video-grid__overlay">
-        <h1>{{ link.title }}</h1>
+        <h1>{{ link.title | fitText }}</h1>
       </div>
     </div>
   </div>
@@ -11,9 +11,24 @@
 
 <script>
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
+import { truncate } from '@helpers/stringHelper';
 
 export default {
   name: 'VideoGrid',
+
+  filters: {
+    /**
+     * Truncate text content if necessary
+     * @param {string} value
+     * @returns {string}
+     */
+    fitText(value) {
+      const maxTextLength = 60;
+      const isTextTooLong = value.length > maxTextLength;
+
+      return isTextTooLong ? truncate(value, maxTextLength) : value;
+    },
+  },
 
   props: {
     videoLinks: {
@@ -65,7 +80,7 @@ export default {
     }
 
     h1 {
-      @apply font-bold text-xl;
+      @apply font-bold;
     }
   }
 }
