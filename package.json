@@ -9,7 +9,7 @@
     "lint:scss": "stylelint ./src/**/*.{vue,scss} --fix"
   },
   "dependencies": {
-    "@animxyz/vue": "^0.4.0",
+    "@animxyz/vue": "^0.6.4",
     "autoprefixer": "^9",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
