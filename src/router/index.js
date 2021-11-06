@@ -8,6 +8,7 @@ import store from '@store';
 export const ROUTE_UPCOMING = 'Upcoming Launches';
 export const ROUTE_ABOUT = 'About';
 export const ROUTE_LOGIN = 'Login';
+export const ROUTE_404 = 'Are you lost?';
 
 // Dashboard routes
 export const ROUTE_DASHBOARD_OVERVIEW = 'Overview - Dashboard';
@@ -53,6 +54,12 @@ const routes = [
     name: ROUTE_LOGIN,
     component: () => import(/* webpackChunkName "login" */ '@views/Login'),
     meta: { title: ROUTE_LOGIN },
+  },
+  {
+    path: '*',
+    name: ROUTE_404,
+    component: () => import(/* webpackChunkName "page-not-found" */ '@views/PageNotFound'),
+    meta: { title: ROUTE_404 },
   },
 ];
 
