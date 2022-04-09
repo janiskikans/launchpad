@@ -15,6 +15,9 @@
           <router-link to="/" tag="button" class="nav-button mr-2" exact>
             Upcoming Launches
           </router-link>
+          <router-link to="/past" tag="button" class="nav-button mr-2" exact>
+            Past Launches
+          </router-link>
           <router-link to="/about" tag="button" class="nav-button">
             About
           </router-link>

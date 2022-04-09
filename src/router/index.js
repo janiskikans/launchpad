@@ -6,6 +6,7 @@ import store from '@store';
 
 // Main routes
 export const ROUTE_UPCOMING = 'Upcoming Launches';
+export const ROUTE_PAST_LAUNCHES = 'Past Launches';
 export const ROUTE_ABOUT = 'About';
 export const ROUTE_LOGIN = 'Login';
 
@@ -21,6 +22,12 @@ const routes = [
     name: ROUTE_UPCOMING,
     component: UpcomingLaunches,
     meta: { title: ROUTE_UPCOMING },
+  },
+  {
+    path: '/past',
+    name: ROUTE_PAST_LAUNCHES,
+    component: () => import(/* webpackChunkName: "past-launches"*/ '@views/PastLaunches'),
+    meta: { title: ROUTE_PAST_LAUNCHES },
   },
   {
     path: '/about',
