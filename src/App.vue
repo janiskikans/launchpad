@@ -17,7 +17,7 @@
       <maintenance v-if="isMaintenanceActive" />
     </main>
 
-    <main-footer class="mb-6" />
+    <main-footer class="my-6" />
 
     <div class="flex justify-center mb-6 lg:hidden">
       <theme-toggler :current-theme="theme" class="relative" @change-theme="changeTheme" />

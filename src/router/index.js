@@ -8,7 +8,7 @@ import store from '@store';
 export const ROUTE_UPCOMING = 'Upcoming Launches';
 export const ROUTE_ABOUT = 'About';
 export const ROUTE_LOGIN = 'Login';
-export const ROUTE_404 = 'Are you lost?';
+export const ROUTE_404 = 'Page Not Found';
 
 // Dashboard routes
 export const ROUTE_DASHBOARD_OVERVIEW = 'Overview - Dashboard';
