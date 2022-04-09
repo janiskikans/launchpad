@@ -9,7 +9,7 @@
       />
     </XyzTransitionGroup>
 
-    <LoadingDataError v-if="!pastLaunches.length" />
+    <LoadingDataError v-if="!isLoading && !pastLaunches.length" />
   </div>
 </template>
 
