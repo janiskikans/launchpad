@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
     <XyzTransitionGroup v-if="upcomingLaunches" class="item-grid" xyz="fade up stagger-1.5">
-      <launch-card
+      <LaunchCard
         v-for="(launch, index) in upcomingLaunches"
         :key="index"
         :launch="launch"
@@ -9,28 +9,19 @@
       />
     </XyzTransitionGroup>
 
-    <div v-if="isReady && !upcomingLaunches.length" class="text-center my-10 md:my-16 px-8">
-      <h1 class="text-2xl text-white">
-        Oh no! Something went wrong while loading data.
-      </h1>
-      <p class="text-lg text-gray-300 mt-2">
-        Please try again later. If the problem persists please
-        <better-link :href="'mailto:janis.kikans@gmail.com'" text="contact the developer" />
-        <span>.</span>
-      </p>
-    </div>
+    <LoadingDataError v-if="isReady && !upcomingLaunches.length" />
   </div>
 </template>
 
 <script>
-import LaunchCard from '@components/upcomingLaunches/LaunchCard';
+import LaunchCard from '@components/launches/LaunchCard';
 import { getUpcomingLaunches } from '@services/launchService';
-import BetterLink from '@components/utils/BetterLink';
+import LoadingDataError from '@components/utils/LoadingDataError';
 
 export default {
   name: 'UpcomingLaunches',
 
-  components: { LaunchCard, BetterLink },
+  components: { LaunchCard, LoadingDataError },
 
   data() {
     return {
@@ -55,20 +46,8 @@ export default {
   methods: {
     loadUpcomingLaunches() {
       getUpcomingLaunches()
-        .then(launches => this.setUpcomingLaunches(launches))
-        .catch(() => {
-          console.error('There was a problem retrieving upcoming launches');
-          this.upcomingLaunches = [];
-          this.isLoading = false;
-        });
-    },
-
-    /**
-     * @param {Launch[]} launches
-     */
-    setUpcomingLaunches(launches) {
-      this.upcomingLaunches = launches;
-      this.isLoading = false;
+        .then(launches => (this.upcomingLaunches = launches))
+        .finally(() => (this.isLoading = false));
     },
   },
 };
