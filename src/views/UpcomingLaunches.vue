@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import LaunchCard from '@components/upcomingLaunches/LaunchCard';
+import LaunchCard from '@components/launches/LaunchCard';
 import { getUpcomingLaunches } from '@services/launchService';
 import LoadingDataError from '@components/utils/LoadingDataError';
 

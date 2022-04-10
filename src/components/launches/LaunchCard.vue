@@ -62,7 +62,7 @@ import CountdownTimer from '@components/CountdownTimer';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
 import { format } from 'date-fns';
 import { disableBodyScroll } from '@helpers/uiHelper';
-import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
+import LaunchStatusBadge from '@components/launches/LaunchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
 import Launch from '@/structures/launch/launch';
 import * as statusHelper from '@helpers/launchStatusHelper';
@@ -73,7 +73,7 @@ export default {
   components: {
     CountdownTimer,
     Modal: () => import('@components/ui/Modal'),
-    DetailedLaunchModal: () => import('@components/upcomingLaunches/DetailedLaunchModal'),
+    DetailedLaunchModal: () => import('@components/launches/DetailedLaunchModal'),
     LaunchStatusBadge,
   },
 

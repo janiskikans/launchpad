@@ -15,7 +15,7 @@
 
 <script>
 import LoadingDataError from '@components/utils/LoadingDataError';
-import LaunchCard from '@components/upcomingLaunches/LaunchCard';
+import LaunchCard from '@components/launches/LaunchCard';
 import { getPastLaunches } from '@services/launchService';
 
 export default {

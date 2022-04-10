@@ -10,8 +10,8 @@
         Launchpad
       </div>
 
-      <nav class="flex flex-wrap items-center text-base">
-        <div v-if="showNavButtons" id="nav">
+      <nav class="flex flex-wrap flex-col items-center text-base">
+        <div v-if="showNavButtons" id="nav" class="flex flex-col sm:flex-row">
           <router-link to="/" tag="button" class="nav-button mr-2" exact>
             Upcoming Launches
           </router-link>

@@ -125,7 +125,7 @@
 import Card from '@components/ui/Card';
 import { format } from 'date-fns';
 import { LAUNCH_COUNTDOWN_FORMAT } from '@helpers/dateHelper';
-import LaunchStatusBadge from '@components/upcomingLaunches/launchStatusBadge';
+import LaunchStatusBadge from '@components/launches/LaunchStatusBadge';
 import placeholderImageUrl from '@assets/images/launchpad_image_placeholder.png';
 import Launch from '@/structures/launch/launch';
 import VideoGrid from '@components/ui/VideoGrid';
