@@ -111,6 +111,10 @@
         </div>
       </card>
 
+      <card title="Map" class="col-span-3 md:col-span-full">
+        <LaunchLocationMap :longitude="launch.pad.longitude" :latitude="launch.pad.latitude" />
+      </card>
+
       <card title="Videos & Livestreams" icon="videocam-outline" class="col-span-3 md:col-span-full">
         <video-grid v-if="launch.externalUrls.length" :video-links="launch.externalUrls" class="my-2" />
         <p v-else>
@@ -131,6 +135,7 @@ import Launch from '@/structures/launch/launch';
 import VideoGrid from '@components/ui/VideoGrid';
 import TextCollapse from '@components/ui/TextCollapse';
 import CountryFlag from 'vue-country-flag';
+import LaunchLocationMap from '@components/launches/LaunchLocationMap';
 
 export default {
   name: 'DetailedLaunchModal',
@@ -141,6 +146,7 @@ export default {
     VideoGrid,
     TextCollapse,
     CountryFlag,
+    LaunchLocationMap,
   },
 
   props: {
