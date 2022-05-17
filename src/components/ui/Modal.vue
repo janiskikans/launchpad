@@ -1,5 +1,5 @@
 <template>
-  <transition name="modal-fade">
+  <transition name="modal-fade" appear>
     <div class="modal-background fixed flex justify-center items-center inset-0 z-10" @click.self="closeModal">
       <div class="modal" aria-labelledby="modalTitle" aria-describedby="modalDescription">
         <div id="modalTitle" class="px-6 py-4 flex justify-between">

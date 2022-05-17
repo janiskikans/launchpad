@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <modal v-show="showLaunchModal" @close-modal="showLaunchModal = false">
+    <modal v-if="showLaunchModal" @close-modal="showLaunchModal = false">
       <template v-slot:header>
         <span class="sm:mr-24 text-2xl">{{ launch.name }}</span>
       </template>
