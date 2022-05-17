@@ -111,8 +111,13 @@
         </div>
       </card>
 
-      <card title="Map" class="col-span-3 md:col-span-full">
-        <LaunchLocationMap :longitude="launch.pad.longitude" :latitude="launch.pad.latitude" />
+      <card
+        v-if="showPadLocationMap"
+        class="col-span-3 md:col-span-full"
+        :has-header="false"
+        :has-content-padding="false"
+      >
+        <LaunchLocationMap :pad="launch.pad" class="w-full h-80" />
       </card>
 
       <card title="Videos & Livestreams" icon="videocam-outline" class="col-span-3 md:col-span-full">
@@ -163,18 +168,19 @@ export default {
   },
 
   computed: {
-    /**
-     * @return {string}
-     */
+    /** @return {string} */
     launchWindowStart() {
       return format(this.launch.windowStart, LAUNCH_COUNTDOWN_FORMAT);
     },
 
-    /**
-     * @return {string}
-     */
+    /** @return {string} */
     launchWindowEnd() {
       return format(this.launch.windowEnd, LAUNCH_COUNTDOWN_FORMAT);
+    },
+
+    /** @returns {boolean} */
+    showPadLocationMap() {
+      return this.launch.pad && this.launch.pad.longitude && this.launch.pad.latitude;
     },
   },
 };
