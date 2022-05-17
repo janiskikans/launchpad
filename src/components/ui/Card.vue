@@ -6,7 +6,7 @@
         {{ title }}
       </h1>
     </div>
-    <div class="px-4 py-3">
+    <div :class="contentClasses">
       <slot>Card content</slot>
     </div>
   </div>
@@ -27,10 +27,22 @@ export default {
       required: false,
       default: true,
     },
+    hasContentPadding: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
     icon: {
       type: String,
       required: false,
       default: '',
+    },
+  },
+
+  computed: {
+    /** @returns {string} */
+    contentClasses() {
+      return this.hasContentPadding ? 'px-4 py-3' : '';
     },
   },
 };
