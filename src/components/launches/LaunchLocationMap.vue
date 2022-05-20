@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :id="mapElementId" class="w-full h-80 rounded-lg"></div>
+    <div :id="mapElementId" :class="classes"></div>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
     pad: {
       type: LaunchPad,
       required: true,
+    },
+    classes: {
+      type: String,
+      required: false,
+      default: 'w-full h-80 rounded-lg',
     },
   },
 
@@ -51,15 +56,12 @@ export default {
         zoom: 6,
       });
 
-      this.setPadMarker();
-      this.padMarker.togglePopup();
-    },
-
-    setPadMarker() {
       this.padMarker = new mapboxgl.Marker({ color: '#D3CFCE' })
         .setLngLat(this.padCoordinates)
         .setPopup(this.getMarkerPopup())
         .addTo(this.mapInstance);
+
+      this.padMarker.togglePopup();
     },
 
     getMarkerPopup() {

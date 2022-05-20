@@ -35,10 +35,10 @@
             <div v-tooltip="launchTimeTooltip" class="text-lg dark:text-gray-200 text-gray-700 text-center mb-2">
               {{ launchTime }}
             </div>
-            <countdown-timer :end-time="launch.net.getTime()" />
+            <CountdownTimer :end-time="launch.net.getTime()" />
           </div>
 
-          <launch-status-badge
+          <LaunchStatusBadge
             :launch-status="launch.status"
             class="lg:ml-12 xl:ml-0 mt-4 mb-2 lg:my-auto xl:mt-5 xl:mb-0"
           />
@@ -46,14 +46,14 @@
       </div>
     </div>
 
-    <modal v-if="showLaunchModal" @close-modal="showLaunchModal = false">
+    <Modal v-if="showLaunchModal" @close-modal="showLaunchModal = false">
       <template v-slot:header>
         <span class="sm:mr-24 text-2xl">{{ launch.name }}</span>
       </template>
       <template v-slot:body>
-        <detailed-launch-modal :launch="launch" />
+        <DetailedLaunchModal :launch="launch" />
       </template>
-    </modal>
+    </Modal>
   </div>
 </template>
 

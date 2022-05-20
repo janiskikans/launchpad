@@ -11,14 +11,14 @@
           :style="{ backgroundImage: 'url(' + placeholderImage + ')' }"
           class="detailed-launch-modal__launch-placeholder-image rounded-lg"
         ></div>
-        <launch-status-badge
+        <LaunchStatusBadge
           :launch-status="launch.status"
           :respond-to-dark-mode="false"
           class="absolute top-10 left-10 z-20"
         />
       </div>
 
-      <card title="General" class="col-span-3">
+      <Card title="General" class="col-span-3">
         <div class="space-y-2 mt-0">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -33,9 +33,9 @@
             <p>{{ launchWindowEnd }}</p>
           </article>
         </div>
-      </card>
+      </Card>
 
-      <card title="Provider" class="col-span-3">
+      <Card title="Provider" class="col-span-3">
         <div v-if="launch.launchServiceProvider">
           <div class="space-y-2 mt-0">
             <article>
@@ -64,9 +64,9 @@
         <div v-else>
           No provider information provided
         </div>
-      </card>
+      </Card>
 
-      <card title="Mission" class="col-span-3">
+      <Card title="Mission" class="col-span-3">
         <div v-if="launch.mission" class="space-y-2">
           <article>
             <h3 class="font-bold">Name</h3>
@@ -84,7 +84,7 @@
           </article>
           <article>
             <h3 class="font-bold">Description</h3>
-            <text-collapse
+            <TextCollapse
               :text-content="launch.mission.description ? launch.mission.description : 'Not specified'"
               class="mt-2"
             />
@@ -93,9 +93,9 @@
         <div v-else>
           No mission information available
         </div>
-      </card>
+      </Card>
 
-      <card title="Launch Location" class="col-span-3">
+      <Card title="Launch Location" class="col-span-3">
         <div v-if="launch.pad" class="space-y-2">
           <article>
             <h3 class="font-bold">Location</h3>
@@ -109,23 +109,23 @@
         <div v-else>
           No launch pad information available
         </div>
-      </card>
+      </Card>
 
-      <card
+      <Card
         v-if="showPadLocationMap"
         class="col-span-3 md:col-span-full"
         :has-header="false"
         :has-content-padding="false"
       >
         <LaunchLocationMap :pad="launch.pad" class="w-full h-80" />
-      </card>
+      </Card>
 
-      <card title="Videos & Livestreams" icon="videocam-outline" class="col-span-3 md:col-span-full">
-        <video-grid v-if="launch.externalUrls.length" :video-links="launch.externalUrls" class="my-2" />
+      <Card title="Videos & Livestreams" icon="videocam-outline" class="col-span-3 md:col-span-full">
+        <VideoGrid v-if="launch.externalUrls.length" :video-links="launch.externalUrls" class="my-2" />
         <p v-else>
           No videos or livestreams available for this launch
         </p>
-      </card>
+      </Card>
     </div>
   </div>
 </template>
