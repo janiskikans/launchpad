@@ -37,7 +37,13 @@ export default {
 
     /** @returns {string} */
     markerPopupContent() {
-      return `<h1 class="font-bold">${this.pad.name}</h1>`;
+      let contentHtml = `<h1 class="font-bold text-center">${this.pad.name}</h1>`;
+
+      if (this.pad.location && this.pad.location.name) {
+        contentHtml += `<p class="text-center">${this.pad.location.name}</p>`;
+      }
+
+      return contentHtml;
     },
   },
 
