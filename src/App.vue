@@ -129,7 +129,7 @@ body {
 }
 
 html {
-  @apply min-h-screen overflow-y-scroll;
+  @apply min-h-screen overflow-y-scroll overflow-x-auto;
 }
 
 body {
