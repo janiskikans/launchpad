@@ -128,8 +128,12 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+html {
+  @apply min-h-screen overflow-y-scroll overflow-x-auto;
+}
+
 body {
-  @apply dark:from-gray-800 dark:to-gray-800 bg-gradient-to-b from-green-400 to-blue-500;
+  @apply dark:bg-gray-800 bg-blue-500;
 }
 
 #app {
