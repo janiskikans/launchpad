@@ -5,7 +5,7 @@
     </h1>
     <p class="text-lg text-gray-300 mt-2">
       Please try again later. If the problem persists please
-      <BetterLink :href="'mailto:janis.kikans@gmail.com'" text="contact the developer" />
+      <BetterLink :href="'mailto:janis.kikans@gmail.com'" text="contact me" />
       <span>.</span>
     </p>
   </div>
