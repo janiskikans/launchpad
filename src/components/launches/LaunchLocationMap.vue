@@ -60,7 +60,11 @@ export default {
         style: 'mapbox://styles/mapbox/dark-v10',
         center: this.padCoordinates,
         zoom: 6,
+        cooperativeGestures: true,
       });
+
+      // Add option to open the map in fullscreen mode
+      this.mapInstance.addControl(new mapboxgl.FullscreenControl());
 
       this.padMarker = new mapboxgl.Marker({ color: '#D3CFCE' })
         .setLngLat(this.padCoordinates)
