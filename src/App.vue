@@ -136,6 +136,10 @@ body {
   @apply dark:bg-gray-800 bg-blue-500;
 }
 
+main {
+  min-height: 90vh;
+}
+
 #app {
   font-family: 'Open Sans', sans-serif;
 }
